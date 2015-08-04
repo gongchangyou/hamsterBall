@@ -1,0 +1,16 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+public class Area1 : Area {
+	[SerializeField]
+	GameObject map;
+	// Use this for initialization
+	void Awake(){
+		sphereStartPos = sphere.transform.position;
+		cameraStartPos = camera.transform.position;// new Vector3 (0,13,-12); 
+	}
+
+	void Start () {
+		base.Start();
+	}
+}
