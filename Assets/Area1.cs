@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 public class Area1 : Area {
-	[SerializeField]
-	GameObject map;
 	// Use this for initialization
 	void Awake(){
 		sphereStartPos = sphere.transform.position;
