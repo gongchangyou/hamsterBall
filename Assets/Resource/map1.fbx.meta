@@ -335,6 +335,70 @@ ModelImporter:
     100658: group8
     100660: group9
     100662: //RootNode
+    100664: cube2x1_2_slope:cube2x1_2:apple
+    100666: cube2x1_2_slope:cube2x1_2:cube
+    100668: cube2x1_2_slope:cube2x1_2:group1
+    100670: cube2x1_2_slope:cube2x1_2:group2
+    100672: cube2x1_2_slope:cube2x1_2:group3
+    100674: cube2x1_2_slope:cube2x1_2:pCube1
+    100676: cube2x1_2_slope:cube2x1_2:pCube2
+    100678: cube2x1_2_slope:cube2x1_2:polySurface1
+    100680: cube2x1_2_slope:cube2x1_2:polySurface2
+    100682: cube2x1_2_slope:cube2x1_2:transform1
+    100684: cube2x1_2_slope:cube2x1_2:transform2
+    100686: cube2x1_2_slope:cube2x1_2:transform3
+    100688: cube2x1_2_slope:cube2x1_slope:cube2x1:apple
+    100690: cube2x1_2_slope:cube2x1_slope:cube2x1:cube
+    100692: cube2x1_2_slope:cube2x1_slope:cube2x1:group1
+    100694: cube2x1_2_slope:cube2x1_slope:cube2x1:group2
+    100696: cube2x1_2_slope:cube2x1_slope:cube2x1:group3
+    100698: cube2x1_2_slope:cube2x1_slope:cube2x1:pCube1
+    100700: cube2x1_2_slope:cube2x1_slope:cube2x1:polySurface1
+    100702: cube2x1_2_slope:cube2x1_slope:cube2x1:polySurface2
+    100704: cube2x1_2_slope:cube2x1_slope:cube2x1:transform1
+    100706: cube2x1_2_slope:cube2x1_slope:cube2x1:transform2
+    100708: cube2x1_2_slope:cube2x1_slope:cube2x1:transform3
+    100710: cube2x1_slope1:cube2x1:apple
+    100712: cube2x1_slope1:cube2x1:cube
+    100714: cube2x1_slope1:cube2x1:group1
+    100716: cube2x1_slope1:cube2x1:group2
+    100718: cube2x1_slope1:cube2x1:group3
+    100720: cube2x1_slope1:cube2x1:pCube1
+    100722: cube2x1_slope1:cube2x1:pCube2
+    100724: cube2x1_slope1:cube2x1:polySurface1
+    100726: cube2x1_slope1:cube2x1:polySurface2
+    100728: cube2x1_slope1:cube2x1:transform1
+    100730: cube2x1_slope1:cube2x1:transform2
+    100732: cube2x1_slope1:cube2x1:transform3
+    100734: cube2x1_slope2:cube2x1:apple
+    100736: cube2x1_slope2:cube2x1:cube
+    100738: cube2x1_slope2:cube2x1:group1
+    100740: cube2x1_slope2:cube2x1:group2
+    100742: cube2x1_slope2:cube2x1:group3
+    100744: cube2x1_slope2:cube2x1:pCube1
+    100746: cube2x1_slope2:cube2x1:pCube2
+    100748: cube2x1_slope2:cube2x1:polySurface1
+    100750: cube2x1_slope2:cube2x1:polySurface2
+    100752: cube2x1_slope2:cube2x1:transform1
+    100754: cube2x1_slope2:cube2x1:transform2
+    100756: cube2x1_slope2:cube2x1:transform3
+    100758: cube2x1_slope:cube2x1:apple
+    100760: cube2x1_slope:cube2x1:cube
+    100762: cube2x1_slope:cube2x1:group1
+    100764: cube2x1_slope:cube2x1:group2
+    100766: cube2x1_slope:cube2x1:group3
+    100768: cube2x1_slope:cube2x1:pCube1
+    100770: cube2x1_slope:cube2x1:pCube2
+    100772: cube2x1_slope:cube2x1:polySurface1
+    100774: cube2x1_slope:cube2x1:polySurface2
+    100776: cube2x1_slope:cube2x1:transform1
+    100778: cube2x1_slope:cube2x1:transform2
+    100780: cube2x1_slope:cube2x1:transform3
+    100782: group16
+    100784: group17
+    100786: group18
+    100788: group19
+    100790: group20
     400000: cube2x1:apple
     400002: cube2x1:cube
     400004: cube2x1:group1
@@ -667,6 +731,70 @@ ModelImporter:
     400658: group8
     400660: group9
     400662: //RootNode
+    400664: cube2x1_2_slope:cube2x1_2:apple
+    400666: cube2x1_2_slope:cube2x1_2:cube
+    400668: cube2x1_2_slope:cube2x1_2:group1
+    400670: cube2x1_2_slope:cube2x1_2:group2
+    400672: cube2x1_2_slope:cube2x1_2:group3
+    400674: cube2x1_2_slope:cube2x1_2:pCube1
+    400676: cube2x1_2_slope:cube2x1_2:pCube2
+    400678: cube2x1_2_slope:cube2x1_2:polySurface1
+    400680: cube2x1_2_slope:cube2x1_2:polySurface2
+    400682: cube2x1_2_slope:cube2x1_2:transform1
+    400684: cube2x1_2_slope:cube2x1_2:transform2
+    400686: cube2x1_2_slope:cube2x1_2:transform3
+    400688: cube2x1_2_slope:cube2x1_slope:cube2x1:apple
+    400690: cube2x1_2_slope:cube2x1_slope:cube2x1:cube
+    400692: cube2x1_2_slope:cube2x1_slope:cube2x1:group1
+    400694: cube2x1_2_slope:cube2x1_slope:cube2x1:group2
+    400696: cube2x1_2_slope:cube2x1_slope:cube2x1:group3
+    400698: cube2x1_2_slope:cube2x1_slope:cube2x1:pCube1
+    400700: cube2x1_2_slope:cube2x1_slope:cube2x1:polySurface1
+    400702: cube2x1_2_slope:cube2x1_slope:cube2x1:polySurface2
+    400704: cube2x1_2_slope:cube2x1_slope:cube2x1:transform1
+    400706: cube2x1_2_slope:cube2x1_slope:cube2x1:transform2
+    400708: cube2x1_2_slope:cube2x1_slope:cube2x1:transform3
+    400710: cube2x1_slope1:cube2x1:apple
+    400712: cube2x1_slope1:cube2x1:cube
+    400714: cube2x1_slope1:cube2x1:group1
+    400716: cube2x1_slope1:cube2x1:group2
+    400718: cube2x1_slope1:cube2x1:group3
+    400720: cube2x1_slope1:cube2x1:pCube1
+    400722: cube2x1_slope1:cube2x1:pCube2
+    400724: cube2x1_slope1:cube2x1:polySurface1
+    400726: cube2x1_slope1:cube2x1:polySurface2
+    400728: cube2x1_slope1:cube2x1:transform1
+    400730: cube2x1_slope1:cube2x1:transform2
+    400732: cube2x1_slope1:cube2x1:transform3
+    400734: cube2x1_slope2:cube2x1:apple
+    400736: cube2x1_slope2:cube2x1:cube
+    400738: cube2x1_slope2:cube2x1:group1
+    400740: cube2x1_slope2:cube2x1:group2
+    400742: cube2x1_slope2:cube2x1:group3
+    400744: cube2x1_slope2:cube2x1:pCube1
+    400746: cube2x1_slope2:cube2x1:pCube2
+    400748: cube2x1_slope2:cube2x1:polySurface1
+    400750: cube2x1_slope2:cube2x1:polySurface2
+    400752: cube2x1_slope2:cube2x1:transform1
+    400754: cube2x1_slope2:cube2x1:transform2
+    400756: cube2x1_slope2:cube2x1:transform3
+    400758: cube2x1_slope:cube2x1:apple
+    400760: cube2x1_slope:cube2x1:cube
+    400762: cube2x1_slope:cube2x1:group1
+    400764: cube2x1_slope:cube2x1:group2
+    400766: cube2x1_slope:cube2x1:group3
+    400768: cube2x1_slope:cube2x1:pCube1
+    400770: cube2x1_slope:cube2x1:pCube2
+    400772: cube2x1_slope:cube2x1:polySurface1
+    400774: cube2x1_slope:cube2x1:polySurface2
+    400776: cube2x1_slope:cube2x1:transform1
+    400778: cube2x1_slope:cube2x1:transform2
+    400780: cube2x1_slope:cube2x1:transform3
+    400782: group16
+    400784: group17
+    400786: group18
+    400788: group19
+    400790: group20
     2300000: cube2x1:pCube2
     2300002: cube2x1_2:pCube2
     2300004: cube2x3:pCube2
@@ -686,6 +814,10 @@ ModelImporter:
     2300032: cube3x9:cube2x1:pCube2
     2300034: cube3x9:cube2x2:pCube2
     2300036: cube3x9:cube2x3:pCube2
+    2300038: cube2x1_2_slope:cube2x1_2:pCube2
+    2300040: cube2x1_slope1:cube2x1:pCube2
+    2300042: cube2x1_slope2:cube2x1:pCube2
+    2300044: cube2x1_slope:cube2x1:pCube2
     3300000: cube2x1:pCube2
     3300002: cube2x1_2:pCube2
     3300004: cube2x3:pCube2
@@ -705,6 +837,10 @@ ModelImporter:
     3300032: cube3x9:cube2x1:pCube2
     3300034: cube3x9:cube2x2:pCube2
     3300036: cube3x9:cube2x3:pCube2
+    3300038: cube2x1_2_slope:cube2x1_2:pCube2
+    3300040: cube2x1_slope1:cube2x1:pCube2
+    3300042: cube2x1_slope2:cube2x1:pCube2
+    3300044: cube2x1_slope:cube2x1:pCube2
     4300000: cube3x3:cube2x1:pCube2
     4300002: cube3x3:cube2x2:pCube2
     4300004: cube3x3:cube2x3:pCube2
@@ -724,6 +860,10 @@ ModelImporter:
     4300032: cube3x9:cube2x2:pCube2
     4300034: cube3x9:cube2x1:pCube2
     4300036: cube3x9:cube2x3:pCube2
+    4300038: cube2x1_slope:cube2x1:pCube2
+    4300040: cube2x1_2_slope:cube2x1_2:pCube2
+    4300042: cube2x1_slope1:cube2x1:pCube2
+    4300044: cube2x1_slope2:cube2x1:pCube2
     9500000: //RootNode
   materials:
     importMaterials: 1
