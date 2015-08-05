@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class map : MonoBehaviour {
 
 	// Use this for initialization
@@ -9,30 +9,41 @@ public class map : MonoBehaviour {
 		MeshRenderer[] meshRenders = GetComponentsInChildren<MeshRenderer>();
 		
 		//材质;
-		Material[] mats = new Material[meshRenders.Length];
+		List<Material> mats = new List<Material> ();
 		for (int i = 0; i < meshRenders.Length; i++)
 		{
-			mats[i] = meshRenders[i].sharedMaterial;
+			for(int j=0; j<meshRenders[i].sharedMaterials.Length; ++j){
+				mats.Add( meshRenders[i].sharedMaterials[j] );
+			}
 		}
 		
 		//合并Mesh;
 		MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
-		
-		CombineInstance[] combine = new CombineInstance[meshFilters.Length];
-		
+
+		List<CombineInstance> combine = new List<CombineInstance> ();
+
+		int k = 0;
 		for (int i = 0; i < meshFilters.Length; i++)
 		{
-			combine[i].mesh = meshFilters[i].sharedMesh;
-			combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
-			meshFilters[i].gameObject.SetActive(false);
+			MeshFilter filter = meshFilters[i];
+			for(int j = 0; j<filter.sharedMesh.subMeshCount; ++j){
+				CombineInstance combineInstance = new CombineInstance();
+				combineInstance.mesh = filter.sharedMesh;
+				combineInstance.subMeshIndex = j;
+				combineInstance.transform = meshFilters[i].transform.localToWorldMatrix;
+				combine.Add(combineInstance);
+				++k;
+			}
+			filter.gameObject.SetActive(false);
 		}
+
 		
 		MeshRenderer mr = gameObject.AddComponent<MeshRenderer>();
 		MeshFilter mf = gameObject.AddComponent<MeshFilter>();
 		mf.mesh = new Mesh();
-		mf.mesh.CombineMeshes(combine, false);
+		mf.mesh.CombineMeshes(combine.ToArray(), true);
 		gameObject.SetActive(true);
-		mr.sharedMaterials = mats;
+		mr.sharedMaterials = mats.ToArray();
 
 		MeshCollider mc = gameObject.AddComponent<MeshCollider> ();
 		mc.sharedMesh = mf.sharedMesh;

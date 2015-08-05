@@ -62,7 +62,7 @@ public class Area : MonoBehaviour {
 			sphere.rigidbody.velocity = sphere.rigidbody.velocity / 2.0f;
 			sphere.rigidbody.AddForce(force);
 //			sphere.rigidbody.velocity = force;
-			Debug.Log("Draging");
+//			Debug.Log("Draging");
 
 		}
 	

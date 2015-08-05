@@ -19,7 +19,7 @@ public class Sphere : MonoBehaviour {
 	}
 
 	void OnCollisionStay(Collision collisionInfo){
-		Debug.Log("碰撞到的物体的名字是：" + collisionInfo.gameObject.name);
+//		Debug.Log("碰撞到的物体的名字是：" + collisionInfo.gameObject.name);
 		GameObject area = GameObject.Find("Area");
 		if (area) {
 			area.SendMessage ("canMove", true);
