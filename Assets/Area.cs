@@ -58,8 +58,8 @@ public class Area : MonoBehaviour {
 			Vector2 tmp = curPos - lastPos;
 			Vector3 force = new Vector3(tmp.x, 0, tmp.y);
 			force.Normalize();
-			force *= 100;
-			sphere.rigidbody.velocity = sphere.rigidbody.velocity / 2.0f;
+			force *= 80;
+			sphere.rigidbody.velocity = sphere.rigidbody.velocity / 4.0f;
 			sphere.rigidbody.AddForce(force);
 //			sphere.rigidbody.velocity = force;
 //			Debug.Log("Draging");
