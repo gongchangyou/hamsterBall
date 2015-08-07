@@ -59,7 +59,7 @@ public class Area : MonoBehaviour {
 			Vector3 force = new Vector3(tmp.x, 0, tmp.y);
 			force.Normalize();
 			force *= 80;
-			sphere.rigidbody.velocity = sphere.rigidbody.velocity / 4.0f;
+//			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.8f;
 			sphere.rigidbody.AddForce(force);
 //			sphere.rigidbody.velocity = force;
 //			Debug.Log("Draging");

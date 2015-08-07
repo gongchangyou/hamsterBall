@@ -44,9 +44,12 @@ public class map : MonoBehaviour {
 		mf.mesh.CombineMeshes(combine.ToArray(), true);
 		gameObject.SetActive(true);
 		mr.sharedMaterials = mats.ToArray();
+		mr.materials = mats.ToArray();;
 
 		MeshCollider mc = gameObject.AddComponent<MeshCollider> ();
 		mc.sharedMesh = mf.sharedMesh;
+		mc.sharedMaterial = Resources.Load ("pm") as PhysicMaterial;
+//		mc.sharedMaterial = pm;
 	}
 	
 	// Update is called once per frame

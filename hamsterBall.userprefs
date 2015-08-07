@@ -1,18 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Area1.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Area.cs">
     <Files>
-      <File FileName="Assets/Area1.cs" Line="42" Column="2" />
-      <File FileName="Assets/Area.cs" Line="11" Column="31" />
-      <File FileName="Assets/Plugins/InputTouches/Gesture.cs" Line="428" Column="25" />
-      <File FileName="Assets/Sphere.cs" Line="21" Column="10" />
+      <File FileName="Assets/Area1.cs" Line="9" Column="3" />
+      <File FileName="Assets/Area.cs" Line="56" Column="11" />
+      <File FileName="Assets/Plugins/InputTouches/Gesture.cs" Line="16" Column="29" />
+      <File FileName="Assets/Sphere.cs" Line="27" Column="3" />
+      <File FileName="Assets/map.cs" Line="42" Column="6" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>m</Value>
+          <Value>meshFilters</Value>
           <Value>list</Value>
-          <Value>ary</Value>
+          <Value>tmp</Value>
         </State>
       </Pad>
     </Pads>
