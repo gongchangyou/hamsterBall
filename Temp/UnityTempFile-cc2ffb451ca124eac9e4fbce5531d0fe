@@ -1,14 +1,11 @@
 -debug
 -target:library
--i:UnityEngine
--i:System.Collections
--base:UnityEngine.MonoBehaviour
--nowarn:BCW0016
--nowarn:BCW0003
--method:Main
--out:Temp/Assembly-UnityScript.dll
--x-type-inference-rule-attribute:UnityEngineInternal.TypeInferenceRuleAttribute
--pragmas:strict,downcast
+-nowarn:0169
+-out:'Temp/Assembly-CSharp.dll'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll'
+-r:'Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll'
+-r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.6/UnityEngine.UI.dll'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll'
 -define:UNITY_4_6_6
 -define:UNITY_4_6
 -define:UNITY_IPHONE
@@ -47,9 +44,16 @@
 -define:UNITY_EDITOR_OSX
 -define:UNITY_TEAM_LICENSE
 -define:UNITY_PRO_LICENSE
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll'
--r:'Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll'
--r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.6/UnityEngine.UI.dll'
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll'
--i:UnityEditor
-'Assets/InputTouches/FPSDisplay/FrameRate.js'
+'Assets/Area.cs'
+'Assets/Area1.cs'
+'Assets/InputTouches/FPSDisplay/FpsDisplay.cs'
+'Assets/Sphere.cs'
+'Assets/iTweenEditor/Helper Classes/EventParamMappings.cs'
+'Assets/iTweenEditor/Helper Classes/Vector3OrTransform.cs'
+'Assets/iTweenEditor/Helper Classes/Vector3OrTransformArray.cs'
+'Assets/iTweenEditor/iTween.cs'
+'Assets/iTweenEditor/iTweenEvent.cs'
+'Assets/iTweenEditor/iTweenPath.cs'
+'Assets/map.cs'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Xml.Linq.dll'

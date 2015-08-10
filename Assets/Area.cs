@@ -11,6 +11,10 @@ public class Area : MonoBehaviour {
 	protected Vector3 sphereStartPos;
 	protected Vector3 cameraStartPos;
 
+	public bool canMove{
+		get{ return _canMove;}
+		set{ _canMove = value;}
+	}
 	private bool _canMove = true;
 
 	// Use this for initialization
@@ -58,8 +62,8 @@ public class Area : MonoBehaviour {
 			Vector2 tmp = curPos - lastPos;
 			Vector3 force = new Vector3(tmp.x, 0, tmp.y);
 			force.Normalize();
-			force *= 80;
-//			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.8f;
+			force *= 50;
+			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.2f;
 			sphere.rigidbody.AddForce(force);
 //			sphere.rigidbody.velocity = force;
 //			Debug.Log("Draging");
@@ -73,7 +77,7 @@ public class Area : MonoBehaviour {
 		Debug.Log("Drag end");
 	}
 
-	void canMove(bool canMove){
+	void updateCanMove(bool canMove){
 		_canMove = canMove;
 	}
 }
