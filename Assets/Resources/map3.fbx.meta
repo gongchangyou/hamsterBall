@@ -535,6 +535,54 @@ ModelImporter:
     101058: transform5
     101060: transform6
     101062: transform7
+    101064: pCylinder3
+    101066: polySurface3
+    101068: pPipe1
+    101070: transform10
+    101072: transform11
+    101074: transform8
+    101076: transform9
+    101078: polySurface10
+    101080: polySurface11
+    101082: polySurface12
+    101084: polySurface13
+    101086: polySurface14
+    101088: polySurface15
+    101090: polySurface16
+    101092: polySurface17
+    101094: polySurface18
+    101096: polySurface19
+    101098: polySurface20
+    101100: polySurface21
+    101102: polySurface22
+    101104: polySurface23
+    101106: polySurface4
+    101108: polySurface5
+    101110: polySurface6
+    101112: polySurface7
+    101114: polySurface8
+    101116: polySurface9
+    101118: transform12
+    101120: transform13
+    101122: transform14
+    101124: transform15
+    101126: transform16
+    101128: transform17
+    101130: transform18
+    101132: transform19
+    101134: transform20
+    101136: transform21
+    101138: transform22
+    101140: transform23
+    101142: transform24
+    101144: transform25
+    101146: transform26
+    101148: transform27
+    101150: transform28
+    101152: transform29
+    101154: transform30
+    101156: transform31
+    101158: transform32
     400000: cube2x1:apple
     400002: cube2x1:cube
     400004: cube2x1:group1
@@ -1067,6 +1115,54 @@ ModelImporter:
     401058: transform5
     401060: transform6
     401062: transform7
+    401064: pCylinder3
+    401066: polySurface3
+    401068: pPipe1
+    401070: transform10
+    401072: transform11
+    401074: transform8
+    401076: transform9
+    401078: polySurface10
+    401080: polySurface11
+    401082: polySurface12
+    401084: polySurface13
+    401086: polySurface14
+    401088: polySurface15
+    401090: polySurface16
+    401092: polySurface17
+    401094: polySurface18
+    401096: polySurface19
+    401098: polySurface20
+    401100: polySurface21
+    401102: polySurface22
+    401104: polySurface23
+    401106: polySurface4
+    401108: polySurface5
+    401110: polySurface6
+    401112: polySurface7
+    401114: polySurface8
+    401116: polySurface9
+    401118: transform12
+    401120: transform13
+    401122: transform14
+    401124: transform15
+    401126: transform16
+    401128: transform17
+    401130: transform18
+    401132: transform19
+    401134: transform20
+    401136: transform21
+    401138: transform22
+    401140: transform23
+    401142: transform24
+    401144: transform25
+    401146: transform26
+    401148: transform27
+    401150: transform28
+    401152: transform29
+    401154: transform30
+    401156: transform31
+    401158: transform32
     2300000: cube2x1_2_slope1:cube2x1_2:pCube2
     2300002: cube2x1_2_slope2:cube2x1_2:pCube2
     2300004: cube2x1_2_slope:cube2x1_2:pCube2
@@ -1108,6 +1204,8 @@ ModelImporter:
     2300076: wandao:pTorus1
     2300078: wandao:pTorus2
     2300080: polySurface2
+    2300082: polySurface3
+    2300084: polySurface23
     3300000: cube2x1_2_slope1:cube2x1_2:pCube2
     3300002: cube2x1_2_slope2:cube2x1_2:pCube2
     3300004: cube2x1_2_slope:cube2x1_2:pCube2
@@ -1149,6 +1247,8 @@ ModelImporter:
     3300076: wandao:pTorus1
     3300078: wandao:pTorus2
     3300080: polySurface2
+    3300082: polySurface3
+    3300084: polySurface23
     4300000: cube3x3:cube2x1:pCube2
     4300002: cube3x3:cube2x2:pCube2
     4300004: cube3x3:cube2x3:pCube2
@@ -1190,6 +1290,8 @@ ModelImporter:
     4300076: wandao:pTorus2
     4300078: wandao:pTorus1
     4300080: polySurface2
+    4300082: polySurface3
+    4300084: polySurface23
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -10,6 +10,7 @@ public class Area : MonoBehaviour {
 
 	protected Vector3 sphereStartPos;
 	protected Vector3 cameraStartPos;
+	protected float endY = -20;
 
 	public bool canMove{
 		get{ return _canMove;}
@@ -25,7 +26,7 @@ public class Area : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (sphere.transform.position.y < -10) {
+		if (sphere.transform.position.y < endY) {
 			_canMove = true;
 			sphere.transform.position = sphereStartPos;
 			sphere.rigidbody.Sleep();
