@@ -524,6 +524,17 @@ ModelImporter:
     101036: group25
     101038: wandao:pTorus1
     101040: wandao:pTorus2
+    101042: pCylinder1
+    101044: pCylinder2
+    101046: polySurface1
+    101048: polySurface2
+    101050: transform1
+    101052: transform2
+    101054: transform3
+    101056: transform4
+    101058: transform5
+    101060: transform6
+    101062: transform7
     400000: cube2x1:apple
     400002: cube2x1:cube
     400004: cube2x1:group1
@@ -1045,6 +1056,17 @@ ModelImporter:
     401036: group25
     401038: wandao:pTorus1
     401040: wandao:pTorus2
+    401042: pCylinder1
+    401044: pCylinder2
+    401046: polySurface1
+    401048: polySurface2
+    401050: transform1
+    401052: transform2
+    401054: transform3
+    401056: transform4
+    401058: transform5
+    401060: transform6
+    401062: transform7
     2300000: cube2x1_2_slope1:cube2x1_2:pCube2
     2300002: cube2x1_2_slope2:cube2x1_2:pCube2
     2300004: cube2x1_2_slope:cube2x1_2:pCube2
@@ -1085,6 +1107,7 @@ ModelImporter:
     2300074: pCube4
     2300076: wandao:pTorus1
     2300078: wandao:pTorus2
+    2300080: polySurface2
     3300000: cube2x1_2_slope1:cube2x1_2:pCube2
     3300002: cube2x1_2_slope2:cube2x1_2:pCube2
     3300004: cube2x1_2_slope:cube2x1_2:pCube2
@@ -1125,6 +1148,7 @@ ModelImporter:
     3300074: pCube4
     3300076: wandao:pTorus1
     3300078: wandao:pTorus2
+    3300080: polySurface2
     4300000: cube3x3:cube2x1:pCube2
     4300002: cube3x3:cube2x2:pCube2
     4300004: cube3x3:cube2x3:pCube2
@@ -1165,6 +1189,7 @@ ModelImporter:
     4300074: pCube1
     4300076: wandao:pTorus2
     4300078: wandao:pTorus1
+    4300080: polySurface2
     9500000: //RootNode
   materials:
     importMaterials: 1

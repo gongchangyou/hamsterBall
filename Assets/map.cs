@@ -5,6 +5,7 @@ public class map : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		/*
 		//获取MeshRender;
 		MeshRenderer[] meshRenders = GetComponentsInChildren<MeshRenderer>();
 		
@@ -50,6 +51,7 @@ public class map : MonoBehaviour {
 		mc.sharedMesh = mf.sharedMesh;
 		mc.sharedMaterial = Resources.Load ("pm") as PhysicMaterial;
 //		mc.sharedMaterial = pm;
+*/
 	}
 	
 	// Update is called once per frame
