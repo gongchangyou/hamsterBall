@@ -50,6 +50,7 @@
      <Compile Include="Assets\Area1.cs" />
      <Compile Include="Assets\InputTouches\FPSDisplay\FpsDisplay.cs" />
      <Compile Include="Assets\Sphere.cs" />
+     <Compile Include="Assets\TriggerSound.cs" />
      <Compile Include="Assets\iTweenEditor\Helper Classes\EventParamMappings.cs" />
      <Compile Include="Assets\iTweenEditor\Helper Classes\Vector3OrTransform.cs" />
      <Compile Include="Assets\iTweenEditor\Helper Classes\Vector3OrTransformArray.cs" />

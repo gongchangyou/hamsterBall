@@ -1,5 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.UI;
+using System.Threading;
+public static class TimeSpanToolV2
+{
+	public static TimeSpan AddSeconds(this TimeSpan ts, int seconds)
+	{
+		return ts.Add(new TimeSpan(0, 0, seconds));
+	}
+	public static TimeSpan AddMinutes(this TimeSpan ts, int minutes)
+	{
+		return ts.Add(new TimeSpan(0, minutes, 0));
+	}
+	public static TimeSpan AddHours(this TimeSpan ts, int hours)
+	{
+		return ts.Add(new TimeSpan(hours, 0, 0));
+	}
+	public static TimeSpan AddMilliSeconds(this TimeSpan ts, int milliSeconds)
+	{
+		return ts.Add(new TimeSpan(ts.Days, 0, 0, 0, milliSeconds));
+	}
+}
 
 public class Area : MonoBehaviour {
 	[SerializeField]
@@ -12,6 +34,13 @@ public class Area : MonoBehaviour {
 	protected Vector3 cameraStartPos;
 	protected float endY = -20;
 
+	[SerializeField]
+	protected Text text;
+	
+	protected float maxSeconds = 10.0f;
+
+	private float tmpSeconds;
+
 	public bool canMove{
 		get{ return _canMove;}
 		set{ _canMove = value;}
@@ -22,6 +51,7 @@ public class Area : MonoBehaviour {
 	protected void Start () {
 		Gesture.onDraggingE += OnDragging;
 		Gesture.onDraggingEndE += OnDraggingEnd;
+		tmpSeconds = maxSeconds;
 	}
 	
 	// Update is called once per frame
@@ -30,9 +60,6 @@ public class Area : MonoBehaviour {
 			_canMove = true;
 			sphere.transform.position = sphereStartPos;
 			sphere.rigidbody.Sleep();
-//			sphere.rigidbody.velocity = new Vector3(0,0,0);
-//			sphere.rigidbody.rotation = Quaternion.Euler(0,0,0);
-//			Debug.Log("post velocity:" + sphere.rigidbody.velocity.ToString());
 		}
 
 		Vector3 tmp = Vector3.zero;
@@ -48,9 +75,14 @@ public class Area : MonoBehaviour {
 			"time", 0.1f, "islocal", true, "easetype", iTween.EaseType.linear));
 		}
 		*/
-		
-	}
 
+		text.text = tmpSeconds.ToString ("F1");
+		if (tmpSeconds <= 0) {
+			//times up
+
+		}
+	}
+	
 	void OnDragging(DragInfo dragInfo){
 		//Debug.Log (dragInfo.pos);
 		if (!_canMove) {
@@ -81,4 +113,40 @@ public class Area : MonoBehaviour {
 	void updateCanMove(bool canMove){
 		_canMove = canMove;
 	}
+
+	protected void Awake(){
+		countDown ();
+	}
+
+	void countDown(){
+		try
+		{
+			DateTime _timeEnd = DateTime.Now.AddSeconds(maxSeconds);
+			ThreadPool.QueueUserWorkItem((arg) =>
+			                             {
+				TimeSpan _ts = _timeEnd - DateTime.Now;
+				while (true)
+				{
+					Thread.Sleep(100);
+					if (_ts.TotalSeconds >= 0)
+					{
+						Debug.Log("totalSeconds="+_ts.TotalSeconds);
+
+//						Console.WriteLine("还剩余{0}分钟{1}秒", _ts.Minutes, _ts.Seconds);
+						_ts = _ts.AddMilliSeconds(-100);
+						tmpSeconds = _ts.Minutes * 60 + _ts.Seconds + _ts.Milliseconds / 1000.0f;
+					}
+				}
+			});
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+		}
+		finally
+		{
+			Console.ReadLine();
+		}
+	}
+
 }
