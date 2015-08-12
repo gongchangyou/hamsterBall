@@ -583,6 +583,28 @@ ModelImporter:
     101154: transform30
     101156: transform31
     101158: transform32
+    101160: pCube5
+    101162: pCylinder4
+    101164: polySurface24
+    101166: polySurface25
+    101168: polySurface28
+    101170: polySurface29
+    101172: polySurface30
+    101174: polySurface31
+    101176: polySurface32
+    101178: polySurface33
+    101180: polySurface34
+    101182: transform33
+    101184: transform34
+    101186: transform35
+    101188: transform36
+    101190: transform37
+    101192: transform38
+    101194: transform39
+    101196: transform40
+    101198: transform41
+    101200: transform42
+    101202: transform43
     400000: cube2x1:apple
     400002: cube2x1:cube
     400004: cube2x1:group1
@@ -1163,6 +1185,28 @@ ModelImporter:
     401154: transform30
     401156: transform31
     401158: transform32
+    401160: pCube5
+    401162: pCylinder4
+    401164: polySurface24
+    401166: polySurface25
+    401168: polySurface28
+    401170: polySurface29
+    401172: polySurface30
+    401174: polySurface31
+    401176: polySurface32
+    401178: polySurface33
+    401180: polySurface34
+    401182: transform33
+    401184: transform34
+    401186: transform35
+    401188: transform36
+    401190: transform37
+    401192: transform38
+    401194: transform39
+    401196: transform40
+    401198: transform41
+    401200: transform42
+    401202: transform43
     2300000: cube2x1_2_slope1:cube2x1_2:pCube2
     2300002: cube2x1_2_slope2:cube2x1_2:pCube2
     2300004: cube2x1_2_slope:cube2x1_2:pCube2
@@ -1206,6 +1250,7 @@ ModelImporter:
     2300080: polySurface2
     2300082: polySurface3
     2300084: polySurface23
+    2300086: polySurface34
     3300000: cube2x1_2_slope1:cube2x1_2:pCube2
     3300002: cube2x1_2_slope2:cube2x1_2:pCube2
     3300004: cube2x1_2_slope:cube2x1_2:pCube2
@@ -1249,6 +1294,7 @@ ModelImporter:
     3300080: polySurface2
     3300082: polySurface3
     3300084: polySurface23
+    3300086: polySurface34
     4300000: cube3x3:cube2x1:pCube2
     4300002: cube3x3:cube2x2:pCube2
     4300004: cube3x3:cube2x3:pCube2
@@ -1292,6 +1338,7 @@ ModelImporter:
     4300080: polySurface2
     4300082: polySurface3
     4300084: polySurface23
+    4300086: polySurface34
     9500000: //RootNode
   materials:
     importMaterials: 1

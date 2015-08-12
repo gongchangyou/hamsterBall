@@ -1,11 +1,9 @@
 -debug
 -target:library
 -nowarn:0169
--out:'Temp/Assembly-CSharp.dll'
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll'
--r:'Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll'
--r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.6/UnityEngine.UI.dll'
--r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll'
+-out:'Temp/Assembly-CSharp-firstpass.dll'
+-r:'/Applications/Unity/Unity.app/Contents/PlaybackEngines/iossupport/Managed/UnityEngine.dll'
+-r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.6/Standalone/UnityEngine.UI.dll'
 -define:UNITY_4_6_6
 -define:UNITY_4_6
 -define:UNITY_IPHONE
@@ -39,22 +37,14 @@
 -define:ENABLE_NAVMESH_CARVING
 -define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
 -define:ENABLE_MONO
--define:ENABLE_PROFILER
--define:UNITY_EDITOR
--define:UNITY_EDITOR_OSX
--define:UNITY_TEAM_LICENSE
 -define:UNITY_PRO_LICENSE
-'Assets/Area.cs'
-'Assets/Area1.cs'
-'Assets/InputTouches/FPSDisplay/FpsDisplay.cs'
-'Assets/Sphere.cs'
-'Assets/TriggerSound.cs'
-'Assets/iTweenEditor/Helper Classes/EventParamMappings.cs'
-'Assets/iTweenEditor/Helper Classes/Vector3OrTransform.cs'
-'Assets/iTweenEditor/Helper Classes/Vector3OrTransformArray.cs'
-'Assets/iTweenEditor/iTween.cs'
-'Assets/iTweenEditor/iTweenEvent.cs'
-'Assets/iTweenEditor/iTweenPath.cs'
-'Assets/map.cs'
+'Assets/Plugins/InputTouches/BasicDetector.cs'
+'Assets/Plugins/InputTouches/DragDetector.cs'
+'Assets/Plugins/InputTouches/DualFingerDetector.cs'
+'Assets/Plugins/InputTouches/GameMessage.cs'
+'Assets/Plugins/InputTouches/Gesture.cs'
+'Assets/Plugins/InputTouches/PublicClass.cs'
+'Assets/Plugins/InputTouches/SwipeDetector.cs'
+'Assets/Plugins/InputTouches/TapDetector.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Xml.Linq.dll'

@@ -103,17 +103,19 @@ public class Area : MonoBehaviour {
 			sphere.rigidbody.AddForce(force);
 			*/
 
-			// add angularVelocity
+			int times = 80;
+			// mod angularVelocity
 			Vector3 av = new Vector3(tmp.y, 0, -tmp.x);
 			av.Normalize();
-			av *= 50;
+			av *= times;
 //			Vector3 lastAv = sphere.rigidbody.angularVelocity;
 			sphere.rigidbody.angularVelocity = av;
-			Debug.Log("av="+av);
+//			Debug.Log("av="+av);
 
+			//mod velocity
 			Vector3 v = new Vector3(tmp.x, 0, tmp.y);
 			v.Normalize ();
-			v *= 50;
+			v *= times / 2;
 			sphere.rigidbody.velocity = v * sphere.GetComponent<SphereCollider>().radius * sphere.transform.localScale.x / 6.28f;
 
 		}
@@ -145,7 +147,7 @@ public class Area : MonoBehaviour {
 					Thread.Sleep(100);
 					if (_ts.TotalSeconds >= 0)
 					{
-						Debug.Log("totalSeconds="+_ts.TotalSeconds);
+//						Debug.Log("totalSeconds="+_ts.TotalSeconds);
 
 //						Console.WriteLine("还剩余{0}分钟{1}秒", _ts.Minutes, _ts.Seconds);
 						_ts = _ts.AddMilliSeconds(-100);
