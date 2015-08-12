@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Sphere : MonoBehaviour {
 
-	private float angularDrag = 10.0f;
+	private float angularDrag = 1.0f;
 	// Use this for initialization
 	void Start () {
 		rigidbody.angularDrag = angularDrag;
@@ -13,11 +13,14 @@ public class Sphere : MonoBehaviour {
 	void Update () {
 		GameObject area = GameObject.Find("Area");
 		if (area.GetComponent<Area> ().canMove){
-		    if(rigidbody.velocity.y < -0.01f) {
+		    if(rigidbody.velocity.y < -0.01f) {//down
 				rigidbody.velocity *= 1.01f;
 				rigidbody.angularDrag = 0.0f;
 			}else{
 				rigidbody.angularDrag = angularDrag;
+				if(rigidbody.velocity.y > 0.01f){//up
+					rigidbody.velocity *= 0.95f;
+				}
 			}
 		}
 		Debug.Log ("sphere angurlar" + rigidbody.angularVelocity);

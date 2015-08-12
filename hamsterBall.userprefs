@@ -1,20 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Area.cs">
     <Files>
       <File FileName="Assets/TriggerSound.cs" Line="12" Column="3" />
-      <File FileName="Assets/Area1.cs" Line="11" Column="2" />
-      <File FileName="Assets/Area.cs" Line="132" Column="59" />
-      <File FileName="Assets/Sphere.cs" Line="3" Column="1" />
+      <File FileName="Assets/Area1.cs" Line="8" Column="17" />
+      <File FileName="Assets/Area.cs" Line="104" Column="26" />
+      <File FileName="Assets/Sphere.cs" Line="6" Column="31" />
       <File FileName="Assets/map.cs" Line="46" Column="30" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
+          <Value>tmpSeconds</Value>
+          <Value>_ts.Milliseconds</Value>
+          <Value>_ts.Minutes</Value>
           <Value>_ts.Seconds</Value>
           <Value>_ts.Milliseconds</Value>
-          <Value>tmp</Value>
-          <Value>force</Value>
         </State>
       </Pad>
     </Pads>

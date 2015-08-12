@@ -59,7 +59,9 @@ public class Area : MonoBehaviour {
 		if (sphere.transform.position.y < endY) {
 			_canMove = true;
 			sphere.transform.position = sphereStartPos;
-			sphere.rigidbody.Sleep();
+			sphere.rigidbody.velocity = Vector3.zero;
+			sphere.rigidbody.angularVelocity = Vector3.zero;
+//			sphere.rigidbody.Sleep();
 		}
 
 		Vector3 tmp = Vector3.zero;
@@ -93,13 +95,26 @@ public class Area : MonoBehaviour {
 		} else {
 			Vector2 curPos = dragInfo.pos;
 			Vector2 tmp = curPos - lastPos;
+			/* add force
 			Vector3 force = new Vector3(tmp.x, 0, tmp.y);
 			force.Normalize();
 			force *= 50;
 			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.1f;
 			sphere.rigidbody.AddForce(force);
-//			sphere.rigidbody.velocity = force;
-//			Debug.Log("Draging");
+			*/
+
+			// add angularVelocity
+			Vector3 av = new Vector3(tmp.y, 0, -tmp.x);
+			av.Normalize();
+			av *= 50;
+//			Vector3 lastAv = sphere.rigidbody.angularVelocity;
+			sphere.rigidbody.angularVelocity = av;
+			Debug.Log("av="+av);
+
+			Vector3 v = new Vector3(tmp.x, 0, tmp.y);
+			v.Normalize ();
+			v *= 50;
+			sphere.rigidbody.velocity = v * sphere.GetComponent<SphereCollider>().radius * sphere.transform.localScale.x / 6.28f;
 
 		}
 	
