@@ -58,7 +58,7 @@ public class Area : MonoBehaviour {
 	void Update () {
 		if (sphere.transform.position.y < endY) {
 			_canMove = true;
-			sphere.transform.position = sphereStartPos;
+			sphere.transform.position = sphere.GetComponent<Sphere>().jumpPos;
 			sphere.rigidbody.velocity = Vector3.zero;
 			sphere.rigidbody.angularVelocity = Vector3.zero;
 //			sphere.rigidbody.Sleep();

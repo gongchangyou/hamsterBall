@@ -3,10 +3,10 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Area.cs">
     <Files>
       <File FileName="Assets/TriggerSound.cs" Line="12" Column="3" />
-      <File FileName="Assets/Area1.cs" Line="8" Column="17" />
-      <File FileName="Assets/Area.cs" Line="104" Column="26" />
-      <File FileName="Assets/Sphere.cs" Line="6" Column="31" />
-      <File FileName="Assets/map.cs" Line="46" Column="30" />
+      <File FileName="Assets/Area1.cs" Line="10" Column="36" />
+      <File FileName="Assets/Area.cs" Line="62" Column="45" />
+      <File FileName="Assets/Sphere.cs" Line="8" Column="24" />
+      <File FileName="Assets/map.cs" Line="52" Column="24" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
