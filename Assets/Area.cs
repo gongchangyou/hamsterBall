@@ -56,12 +56,13 @@ public class Area : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (sphere.transform.position.y < endY) {
+		if (sphere.transform.position.y < endY || sphere.GetComponent<Sphere>().crash) {
 			_canMove = true;
 			sphere.transform.position = sphere.GetComponent<Sphere>().jumpPos;
 			sphere.rigidbody.velocity = Vector3.zero;
 			sphere.rigidbody.angularVelocity = Vector3.zero;
 //			sphere.rigidbody.Sleep();
+			sphere.GetComponent<Sphere>().crash = false;
 		}
 
 		Vector3 tmp = Vector3.zero;
@@ -103,7 +104,7 @@ public class Area : MonoBehaviour {
 			sphere.rigidbody.AddForce(force);
 			*/
 
-			int times = 80;
+			int times = 100;
 			// mod angularVelocity
 			Vector3 av = new Vector3(tmp.y, 0, -tmp.x);
 			av.Normalize();

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Area1 : Area {
 	// Use this for initialization
 	void Awake(){
+		endY = -20.0f;
 		maxSeconds = 25.0f;
 		base.Awake ();
 		sphereStartPos = sphere.transform.position;

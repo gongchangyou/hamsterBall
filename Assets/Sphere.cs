@@ -5,7 +5,13 @@ public class Sphere : MonoBehaviour {
 
 	private float angularDrag = 1.0f;
 
+	private float crashHeight = 2.0f;
+
 	public Vector3 jumpPos = Vector3.zero;
+
+	public bool crash = false;
+
+	public bool startFly = false;
 	// Use this for initialization
 	void Start () {
 		rigidbody.angularDrag = angularDrag;
@@ -29,9 +35,29 @@ public class Sphere : MonoBehaviour {
 
 	}
 
+	void OnTriggerEnter(Collider other){
+		Debug.Log ("sphere trigger");
+		updateJumpPos ();
+		startFly = false;
+	}
+
+	void OnTriggerExit(Collider other){
+		Debug.Log ("sphere trigger eixt");
+		updateJumpPos ();
+		startFly = false;
+	}
+
 	void OnCollisionEnter(Collision collisionInfo)
 	{
+		Debug.Log ("sphere OnCollisionEnter  jumpPos="+jumpPos + "curPos="+transform.position);
+		if (startFly) {
+			Vector3 curPos = transform.position;
+			Vector3 lastPos = jumpPos;
 
+			if(lastPos.y - curPos.y > crashHeight){
+				crash = true;
+			}
+		}
 	}
 
 	void OnCollisionStay(Collision collisionInfo){
@@ -40,18 +66,22 @@ public class Sphere : MonoBehaviour {
 		if (area) {
 			area.SendMessage ("updateCanMove", true);
 		}
-		Vector3 vNormal = rigidbody.velocity;
-		vNormal.Normalize ();
-		jumpPos = transform.position - vNormal * 0.5f;
+		updateJumpPos ();
 	}
 
 	void OnCollisionExit(Collision collisionInfo)
 	{
 		Debug.Log("exit 碰撞到的物体的名字是：" + collisionInfo.gameObject.name);
-
+		startFly = true;
 		GameObject area = GameObject.Find("Area");
 		if (area) {
 			area.SendMessage ("updateCanMove", false);
 		}
+	}
+
+	void updateJumpPos(){
+		Vector3 vNormal = rigidbody.velocity;
+		vNormal.Normalize ();
+		jumpPos = transform.position - vNormal * 0.5f + new Vector3(0,0.5f,0);
 	}
 }
