@@ -12,6 +12,8 @@ public class Sphere : MonoBehaviour {
 	public bool crash = false;
 
 	public bool startFly = false;
+
+	public bool inCube = false;
 	// Use this for initialization
 	void Start () {
 		rigidbody.angularDrag = angularDrag;
@@ -37,25 +39,28 @@ public class Sphere : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		Debug.Log ("sphere trigger");
-		updateJumpPos ();
-		startFly = false;
-	}
+		inCube = true;
+	}	
 
 	void OnTriggerExit(Collider other){
 		Debug.Log ("sphere trigger eixt");
-		updateJumpPos ();
-		startFly = false;
 	}
 
 	void OnCollisionEnter(Collision collisionInfo)
 	{
 		Debug.Log ("sphere OnCollisionEnter  jumpPos="+jumpPos + "curPos="+transform.position);
-		if (startFly) {
-			Vector3 curPos = transform.position;
-			Vector3 lastPos = jumpPos;
+		//judge crash
+		if (inCube) {
+			inCube = false;
+		} else {
+			if (startFly) {
+				Vector3 curPos = transform.position;
+				Vector3 lastPos = jumpPos;
 
-			if(lastPos.y - curPos.y > crashHeight){
-				crash = true;
+				if (lastPos.y - curPos.y > crashHeight) {
+					crash = true;
+					Debug.Log ("crash=true");
+				}
 			}
 		}
 	}
@@ -72,7 +77,9 @@ public class Sphere : MonoBehaviour {
 	void OnCollisionExit(Collision collisionInfo)
 	{
 		Debug.Log("exit 碰撞到的物体的名字是：" + collisionInfo.gameObject.name);
-		startFly = true;
+		if (!inCube) {
+			startFly = true;
+		}
 		GameObject area = GameObject.Find("Area");
 		if (area) {
 			area.SendMessage ("updateCanMove", false);

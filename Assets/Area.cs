@@ -66,7 +66,7 @@ public class Area : MonoBehaviour {
 		}
 
 		Vector3 tmp = Vector3.zero;
-		tmp.x = (sphere.transform.position.x - sphereStartPos.x) / 2;
+		tmp.x = (sphere.transform.position.x - sphereStartPos.x) * 0.8f;
 		tmp.y = sphere.transform.position.y - sphereStartPos.y;
 		tmp.z = sphere.transform.position.z;
 		camera.transform.position = cameraStartPos + tmp;
@@ -125,7 +125,7 @@ public class Area : MonoBehaviour {
 
 	void OnDraggingEnd(DragInfo dragInfo){
 		lastPos = Vector2.zero;
-		Debug.Log("Drag end");
+//		Debug.Log("Drag end");
 	}
 
 	void updateCanMove(bool canMove){
