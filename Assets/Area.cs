@@ -41,7 +41,8 @@ public class Area : MonoBehaviour {
 
 	protected float maxSeconds = 10.0f;
 
-	private float tmpSeconds;
+	protected float tmpSeconds;
+	
 
 	public bool canMove{
 		get{ return _canMove;}
@@ -52,17 +53,47 @@ public class Area : MonoBehaviour {
 	[SerializeField]
 	private UITexture timesUpTexture;
 
-	private bool isTimesUp = false;
+	[SerializeField]
+	private AudioSource startWhistle;
+
+	private float startCountDownSeconds;
+
+	[SerializeField]
+	private AudioSource lostSound;
+
+	[SerializeField]
+	private UILabel startCountDownLabel;
+	private bool notStart = true;
 	// Use this for initialization
 	protected void Start () {
 		Gesture.onDraggingE += OnDragging;
 		Gesture.onDraggingEndE += OnDraggingEnd;
+		Gesture.onTouchDownE += OnTouchDown;
+		Gesture.onMouse1DownE += OnTouchDown;
 		tmpSeconds = maxSeconds;
 
 	}
-	
+
+	protected void OnDestroy(){
+		Gesture.onDraggingE -= OnDragging;
+		Gesture.onDraggingEndE -= OnDraggingEnd;
+		Gesture.onTouchDownE -= OnTouchDown;
+		Gesture.onMouse1DownE -= OnTouchDown; 
+	}
 	// Update is called once per frame
 	void Update () {
+		Debug.Log ("startCountDownSeconds="+startCountDownSeconds);
+		if (startCountDownSeconds > 0) {
+			return;
+		} else {
+			if(notStart){
+				startWhistle.Play();
+				notStart = false;
+				startCountDownLabel.gameObject.SetActive(false);
+				canMove = true;
+				countDown ();
+			}
+		}
 		if (sphere.transform.position.y < endY || sphere.GetComponent<Sphere>().crash) {
 			_canMove = true;
 			sphere.transform.position = sphere.GetComponent<Sphere>().jumpPos;
@@ -87,18 +118,28 @@ public class Area : MonoBehaviour {
 		*/
 
 		timesLabel.text = tmpSeconds.ToString ("F1");
-
+		if(tmpSeconds < 10){
+			timesLabel.color = new Color (255,0,0);
+		}
+//		Debug.Log ("this update tmpSeconds="+this+tmpSeconds);
 		if (tmpSeconds <= 0) {
 			canMove = false;
 			sphere.rigidbody.Sleep();
 			//times up
 			if(timesUpTexture.transform.position.x < 0){
-
+				lostSound.Play();
 				timesUpTexture.transform.position += new Vector3(Time.deltaTime * 50, 0, 0);
 			}
 		}
 	}
-	
+
+	void OnTouchDown(Vector2 pos){
+//		Debug.Log ("tmpSeconds="+tmpSeconds);
+		if (tmpSeconds <= 0) {
+			Application.LoadLevel ("menu");
+		}
+	}
+
 	void OnDragging(DragInfo dragInfo){
 		//Debug.Log (dragInfo.pos);
 		if (!_canMove) {
@@ -142,11 +183,16 @@ public class Area : MonoBehaviour {
 	}
 
 	void updateCanMove(bool canMove){
+		if (notStart) {// not start yet
+			return;
+		}
 		_canMove = canMove;
 	}
 
 	protected void Awake(){
-		countDown ();
+		canMove = false;
+		startCountDownSeconds = 3.0f;
+		timesLabel.text = maxSeconds.ToString ("F1");
 	}
 
 	void countDown(){
@@ -178,6 +224,11 @@ public class Area : MonoBehaviour {
 		{
 			Console.ReadLine();
 		}
+	}
+
+	void FixedUpdate(){
+		startCountDownSeconds -= Time.fixedDeltaTime;
+		startCountDownLabel.text = startCountDownSeconds.ToString("F0");
 	}
 
 }
