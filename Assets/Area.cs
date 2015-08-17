@@ -83,6 +83,13 @@ public class Area : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Debug.Log ("startCountDownSeconds="+startCountDownSeconds);
+
+		Vector3 tmp = Vector3.zero;
+		tmp.x = (sphere.transform.position.x - sphereStartPos.x) * 0.8f;
+		tmp.y = sphere.transform.position.y - sphereStartPos.y;
+		tmp.z = sphere.transform.position.z;
+		camera.transform.position = cameraStartPos + tmp;
+
 		if (startCountDownSeconds > 0) {
 			return;
 		} else {
@@ -103,11 +110,7 @@ public class Area : MonoBehaviour {
 			sphere.GetComponent<Sphere>().crash = false;
 		}
 
-		Vector3 tmp = Vector3.zero;
-		tmp.x = (sphere.transform.position.x - sphereStartPos.x) * 0.8f;
-		tmp.y = sphere.transform.position.y - sphereStartPos.y;
-		tmp.z = sphere.transform.position.z;
-		camera.transform.position = cameraStartPos + tmp;
+
 		//camera moveTo
 		/*
 		if (Mathf.Abs( sphere.transform.position.z ) > 10 && camera.transform.position.z != -11 + Mathf.Round (sphere.transform.position.z)) {
