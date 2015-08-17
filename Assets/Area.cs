@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 using System.Threading;
+
 public static class TimeSpanToolV2
 {
 	public static TimeSpan AddSeconds(this TimeSpan ts, int seconds)
@@ -35,8 +36,9 @@ public class Area : MonoBehaviour {
 	protected float endY = -20;
 
 	[SerializeField]
-	protected Text text;
-	
+	protected UILabel timesLabel;
+	protected UILabel timesStrokeLabel;
+
 	protected float maxSeconds = 10.0f;
 
 	private float tmpSeconds;
@@ -47,11 +49,16 @@ public class Area : MonoBehaviour {
 	}
 	private bool _canMove = true;
 
+	[SerializeField]
+	private UITexture timesUpTexture;
+
+	private bool isTimesUp = false;
 	// Use this for initialization
 	protected void Start () {
 		Gesture.onDraggingE += OnDragging;
 		Gesture.onDraggingEndE += OnDraggingEnd;
 		tmpSeconds = maxSeconds;
+
 	}
 	
 	// Update is called once per frame
@@ -79,10 +86,16 @@ public class Area : MonoBehaviour {
 		}
 		*/
 
-		text.text = tmpSeconds.ToString ("F1");
-		if (tmpSeconds <= 0) {
-			//times up
+		timesLabel.text = tmpSeconds.ToString ("F1");
 
+		if (tmpSeconds <= 0) {
+			canMove = false;
+			sphere.rigidbody.Sleep();
+			//times up
+			if(timesUpTexture.transform.position.x < 0){
+
+				timesUpTexture.transform.position += new Vector3(Time.deltaTime * 50, 0, 0);
+			}
 		}
 	}
 	
