@@ -1,24 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Area.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Sphere.cs">
     <Files>
-      <File FileName="Assets/TriggerSound.cs" Line="1" Column="1" />
-      <File FileName="Assets/Area1.cs" Line="1" Column="1" />
-      <File FileName="Assets/Area.cs" Line="58" Column="36" />
-      <File FileName="Assets/Sphere.cs" Line="1" Column="1" />
+      <File FileName="Assets/Area1.cs" Line="7" Column="17" />
+      <File FileName="Assets/Area.cs" Line="240" Column="1" />
+      <File FileName="Assets/TriggerSound.cs" Line="20" Column="17" />
       <File FileName="Assets/map.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Scripts/Interaction/UIButtonScale.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Scripts/UI/UISprite.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Scripts/UI/UICamera.cs" Line="1" Column="1" />
-      <File FileName="Assets/menu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/InputTouches/Gesture.cs" Line="1" Column="1" />
+      <File FileName="Assets/menu.cs" Line="21" Column="27" />
+      <File FileName="Assets/Sphere.cs" Line="60" Column="43" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>currentTouch</Value>
-          <Value>currentTouch.pressed</Value>
-          <Value>_ts.Minutes</Value>
+          <Value>sphere.transform.position.y</Value>
+          <Value>sphere.GetComponent&lt;Sphere&gt;().jumpPos</Value>
+          <Value>sphere.transform.position</Value>
           <Value>_ts.Seconds</Value>
           <Value>_ts.Milliseconds</Value>
         </State>
