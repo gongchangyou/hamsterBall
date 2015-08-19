@@ -151,14 +151,15 @@ public class Area : MonoBehaviour {
 		} else {
 			Vector2 curPos = dragInfo.pos;
 			Vector2 tmp = curPos - lastPos;
-			/* add force
-			Vector3 force = new Vector3(tmp.x, 0, tmp.y);
+			// add torgue
+			Vector3 force = new Vector3(tmp.y, 0, -tmp.x);
 			force.Normalize();
 			force *= 50;
-			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.1f;
-			sphere.rigidbody.AddForce(force);
-			*/
+//			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.1f;
+			sphere.rigidbody.AddTorque(force);
 
+
+			/*
 			int times = 150;
 			// mod angularVelocity
 			Vector3 av = new Vector3(tmp.y, 0, -tmp.x);
@@ -175,7 +176,7 @@ public class Area : MonoBehaviour {
 			v.Normalize ();
 			v *= times / 2;
 			sphere.rigidbody.velocity = v * sphere.GetComponent<SphereCollider>().radius * sphere.transform.localScale.x / 6.28f + yVelocity;
-
+*/
 		}
 	
 	}
