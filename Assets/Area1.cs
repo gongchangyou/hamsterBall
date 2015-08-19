@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public class Area1 : Area {
 	// Use this for initialization
 	void Awake(){
-		endY = -50.0f;
-		maxSeconds = 25.0f;
+		endY = -5.0f;
+		maxSeconds = 125.0f;
 		base.Awake ();
 		sphereStartPos = sphere.transform.position;
 		cameraStartPos = camera.transform.position;// new Vector3 (0,13,-12); 

@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class Sphere : MonoBehaviour {
 
-	private float angularDrag = 0.01f;
+	private float angularDrag = 0.5f;
 
-	private float crashHeight = 2.0f;
+	private float crashHeight = 0.5f;
 
 	public Vector3 jumpPos = Vector3.zero;
+	private List<Vector3> trace = new List<Vector3>();
 
 	public bool crash = false;
 
@@ -21,18 +22,18 @@ public class Sphere : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GameObject area = GameObject.Find("Area");
-		if (area.GetComponent<Area> ().canMove){
-		    if(rigidbody.velocity.y < -0.01f) {//down
-				rigidbody.velocity *= 1.01f;
-				rigidbody.angularDrag = 0.0f;
-			}else{
-				rigidbody.angularDrag = angularDrag;
-				if(rigidbody.velocity.y > 0.01f){//up
-					rigidbody.velocity *= 0.95f;
-				}
-			}
-		}
+//		GameObject area = GameObject.Find("Area");
+//		if (area.GetComponent<Area> ().canMove){
+//		    if(rigidbody.velocity.y < -0.01f) {//down
+//				rigidbody.velocity *= 1.01f;
+//				rigidbody.angularDrag = 0.0f;
+//			}else{
+//				rigidbody.angularDrag = angularDrag;
+//				if(rigidbody.velocity.y > 0.01f){//up
+//					rigidbody.velocity *= 0.95f;
+//				}
+//			}
+//		}
 //		Debug.Log ("sphere angurlar" + rigidbody.angularVelocity);
 
 	}
@@ -87,8 +88,15 @@ public class Sphere : MonoBehaviour {
 	}
 
 	void updateJumpPos(){
-		Vector3 vNormal = rigidbody.velocity;
-		vNormal.Normalize ();
-		jumpPos = transform.position - vNormal * 0.5f + new Vector3(0,0.5f,0);
+		trace.Add (transform.position);
+		jumpPos = trace [(int)Mathf.Max( 0, trace.Count - 0.5f/Time.fixedDeltaTime)];//the position before 0.5 second
+	}
+
+	void FixedUpdate(){
+		//update angular velocity whit velocity 
+		Vector3 v = rigidbody.velocity;
+//		Debug.Log ("v="+v + "av="+rigidbody.angularVelocity);
+//		rigidbody.angularVelocity = new Vector3 (v.z,0,-v.x) / GetComponent<SphereCollider>().radius;
+
 	}
 }
