@@ -82,8 +82,6 @@ public class Area : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("startCountDownSeconds="+startCountDownSeconds);
-
 		Vector3 tmp = Vector3.zero;
 		tmp.x = (sphere.transform.position.x - sphereStartPos.x) * 0.8f;
 		tmp.y = sphere.transform.position.y - sphereStartPos.y;
@@ -161,20 +159,22 @@ public class Area : MonoBehaviour {
 			sphere.rigidbody.AddForce(force);
 			*/
 
-			int times = 100;
+			int times = 150;
 			// mod angularVelocity
 			Vector3 av = new Vector3(tmp.y, 0, -tmp.x);
 			av.Normalize();
 			av *= times;
+
 //			Vector3 lastAv = sphere.rigidbody.angularVelocity;
 			sphere.rigidbody.angularVelocity = av;
 //			Debug.Log("av="+av);
 
 			//mod velocity
+			Vector3 yVelocity = new Vector3(0,sphere.rigidbody.velocity.y,0);
 			Vector3 v = new Vector3(tmp.x, 0, tmp.y);
 			v.Normalize ();
 			v *= times / 2;
-			sphere.rigidbody.velocity = v * sphere.GetComponent<SphereCollider>().radius * sphere.transform.localScale.x / 6.28f;
+			sphere.rigidbody.velocity = v * sphere.GetComponent<SphereCollider>().radius * sphere.transform.localScale.x / 6.28f + yVelocity;
 
 		}
 	
@@ -230,8 +230,10 @@ public class Area : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		startCountDownSeconds -= Time.fixedDeltaTime;
-		startCountDownLabel.text = startCountDownSeconds.ToString("F0");
+		if (startCountDownSeconds > 0) {
+			startCountDownSeconds -= Time.fixedDeltaTime;
+			startCountDownLabel.text = startCountDownSeconds.ToString ("F0");
+		}
 	}
 
 }

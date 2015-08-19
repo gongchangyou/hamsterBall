@@ -15,12 +15,9 @@ public class menu : MonoBehaviour {
 
 	void openArea(GameObject button){
 		string areaName = "";
-		switch (button.name) {
-		case "button1":
-			areaName = "area1";
-			break;
-		}
-
+		//button.name is "button1" "button2" etc.
+		areaName = "area" + button.name.Substring (6, button.name.Length - 6);
+		Debug.Log (areaName);
 		changeToArea (areaName);
 	}
 	void changeToArea(string areaName){
