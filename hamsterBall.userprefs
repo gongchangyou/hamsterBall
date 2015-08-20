@@ -1,23 +1,24 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Area1.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Area.cs">
     <Files>
-      <File FileName="Assets/Area1.cs" Line="9" Column="17" />
-      <File FileName="Assets/Area.cs" Line="251" Column="4" />
-      <File FileName="Assets/TriggerSound.cs" Line="20" Column="17" />
+      <File FileName="Assets/Area1.cs" Line="8" Column="9" />
+      <File FileName="Assets/Area.cs" Line="133" Column="29" />
+      <File FileName="Assets/TriggerSound.cs" Line="10" Column="12" />
       <File FileName="Assets/map.cs" Line="1" Column="1" />
       <File FileName="Assets/menu.cs" Line="20" Column="24" />
-      <File FileName="Assets/Sphere.cs" Line="57" Column="4" />
       <File FileName="Assets/NGUI/Examples/Scripts/InventorySystem/Game/UIEquipmentSlot.cs" Line="1" Column="1" />
+      <File FileName="Assets/Area2.cs" Line="7" Column="19" />
+      <File FileName="Assets/Sphere.cs" Line="78" Column="36" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>sphere.transform.position.y</Value>
-          <Value>sphere.GetComponent&lt;Sphere&gt;().jumpPos</Value>
-          <Value>sphere.transform.position</Value>
-          <Value>_ts.Seconds</Value>
-          <Value>_ts.Milliseconds</Value>
+          <Value>sphereFromPos</Value>
+          <Value>sphereToPos</Value>
+          <Value>camera.transform.position</Value>
+          <Value>getCameraPos(sphereToPos)</Value>
+          <Value>canMove</Value>
         </State>
       </Pad>
     </Pads>

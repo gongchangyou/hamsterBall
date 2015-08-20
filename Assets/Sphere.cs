@@ -52,7 +52,7 @@ public class Sphere : MonoBehaviour {
 			Area area = transform.GetComponentInParent<Area>();
 			area.win();
 			area.canMove = false;
-
+			collisionInfo.gameObject.GetComponent<UITexture>().mainTexture = Resources.Load("png/goal-lit") as Texture;
 			return;
 		}
 

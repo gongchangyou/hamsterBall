@@ -66,6 +66,96 @@ ModelImporter:
     100120: transform7
     100122: transform8
     100124: transform9
+    100126: pCube10
+    100128: pCube11
+    100130: pCube12
+    100132: pCube13
+    100134: pCube8
+    100136: pCube9
+    100138: polySurface27
+    100140: polySurface28
+    100142: polySurface29
+    100144: polySurface31
+    100146: polySurface32
+    100148: polySurface36
+    100150: polySurface37
+    100152: polySurface39
+    100154: polySurface40
+    100156: polySurface41
+    100158: polySurface42
+    100160: polySurface43
+    100162: polySurface44
+    100164: polySurface45
+    100166: polySurface46
+    100168: polySurface47
+    100170: polySurface48
+    100172: polySurface49
+    100174: polySurface50
+    100176: polySurface51
+    100178: polySurface52
+    100180: polySurface53
+    100182: polySurface54
+    100184: polySurface55
+    100186: polySurface56
+    100188: polySurface57
+    100190: polySurface58
+    100192: polySurface59
+    100194: polySurface60
+    100196: polySurface61
+    100198: polySurface62
+    100200: polySurface63
+    100202: polySurface64
+    100204: polySurface66
+    100206: polySurface67
+    100208: polySurface68
+    100210: polySurface69
+    100212: polySurface70
+    100214: pPipe2
+    100216: pPlane2
+    100218: transform29
+    100220: transform30
+    100222: transform31
+    100224: transform32
+    100226: transform33
+    100228: transform34
+    100230: transform35
+    100232: transform36
+    100234: transform37
+    100236: transform38
+    100238: transform39
+    100240: transform40
+    100242: transform41
+    100244: transform42
+    100246: transform43
+    100248: transform44
+    100250: transform45
+    100252: transform46
+    100254: transform47
+    100256: transform48
+    100258: transform49
+    100260: transform50
+    100262: transform51
+    100264: transform52
+    100266: transform53
+    100268: transform54
+    100270: transform55
+    100272: transform56
+    100274: transform57
+    100276: transform58
+    100278: transform59
+    100280: transform60
+    100282: transform61
+    100284: transform62
+    100286: transform63
+    100288: transform64
+    100290: transform65
+    100292: transform66
+    100294: transform67
+    100296: transform68
+    100298: transform69
+    100300: transform70
+    100302: transform71
+    100304: transform72
     400000: //RootNode
     400002: pCube1
     400004: pCylinder1
@@ -129,6 +219,96 @@ ModelImporter:
     400120: transform7
     400122: transform8
     400124: transform9
+    400126: pCube10
+    400128: pCube11
+    400130: pCube12
+    400132: pCube13
+    400134: pCube8
+    400136: pCube9
+    400138: polySurface27
+    400140: polySurface28
+    400142: polySurface29
+    400144: polySurface31
+    400146: polySurface32
+    400148: polySurface36
+    400150: polySurface37
+    400152: polySurface39
+    400154: polySurface40
+    400156: polySurface41
+    400158: polySurface42
+    400160: polySurface43
+    400162: polySurface44
+    400164: polySurface45
+    400166: polySurface46
+    400168: polySurface47
+    400170: polySurface48
+    400172: polySurface49
+    400174: polySurface50
+    400176: polySurface51
+    400178: polySurface52
+    400180: polySurface53
+    400182: polySurface54
+    400184: polySurface55
+    400186: polySurface56
+    400188: polySurface57
+    400190: polySurface58
+    400192: polySurface59
+    400194: polySurface60
+    400196: polySurface61
+    400198: polySurface62
+    400200: polySurface63
+    400202: polySurface64
+    400204: polySurface66
+    400206: polySurface67
+    400208: polySurface68
+    400210: polySurface69
+    400212: polySurface70
+    400214: pPipe2
+    400216: pPlane2
+    400218: transform29
+    400220: transform30
+    400222: transform31
+    400224: transform32
+    400226: transform33
+    400228: transform34
+    400230: transform35
+    400232: transform36
+    400234: transform37
+    400236: transform38
+    400238: transform39
+    400240: transform40
+    400242: transform41
+    400244: transform42
+    400246: transform43
+    400248: transform44
+    400250: transform45
+    400252: transform46
+    400254: transform47
+    400256: transform48
+    400258: transform49
+    400260: transform50
+    400262: transform51
+    400264: transform52
+    400266: transform53
+    400268: transform54
+    400270: transform55
+    400272: transform56
+    400274: transform57
+    400276: transform58
+    400278: transform59
+    400280: transform60
+    400282: transform61
+    400284: transform62
+    400286: transform63
+    400288: transform64
+    400290: transform65
+    400292: transform66
+    400294: transform67
+    400296: transform68
+    400298: transform69
+    400300: transform70
+    400302: transform71
+    400304: transform72
     2300000: //RootNode
     2300002: pCube1
     2300004: pCylinder1
@@ -138,6 +318,9 @@ ModelImporter:
     2300012: polySurface21
     2300014: polySurface26
     2300016: polySurface9
+    2300018: polySurface47
+    2300020: polySurface70
+    2300022: pPlane2
     3300000: //RootNode
     3300002: pCube1
     3300004: pCylinder1
@@ -147,6 +330,9 @@ ModelImporter:
     3300012: polySurface21
     3300014: polySurface26
     3300016: polySurface9
+    3300018: polySurface47
+    3300020: polySurface70
+    3300022: pPlane2
     4300000: pCube1
     4300002: pCylinder1
     4300004: polySurface1
@@ -155,6 +341,9 @@ ModelImporter:
     4300010: polySurface16
     4300012: polySurface21
     4300014: polySurface26
+    4300016: polySurface47
+    4300018: pPlane2
+    4300020: polySurface70
     9500000: //RootNode
   materials:
     importMaterials: 1
