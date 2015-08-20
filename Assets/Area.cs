@@ -46,6 +46,7 @@ public class Area : MonoBehaviour {
 	public bool canMove{
 		get{ return _canMove;}
 		set{ _canMove = value;if(value){
+				Debug.Log ("canmove true");
 				flySeconds = 0.0f;
 			}}
 	}
@@ -77,6 +78,11 @@ public class Area : MonoBehaviour {
 	private bool isWin = false;
 
 	private float flySeconds = 0.0f;
+
+	private bool movingCamera = false;
+	private Vector3 sphereFromPos;
+	private Vector3 sphereToPos;
+	private float movingCameraTime;
 	// Use this for initialization
 	protected void Start () {
 		Gesture.onDraggingE += OnDragging;
@@ -95,12 +101,6 @@ public class Area : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		Vector3 tmp = Vector3.zero;
-		tmp.x = (sphere.transform.position.x - sphereStartPos.x) * 0.8f;
-		tmp.y = sphere.transform.position.y - sphereStartPos.y;
-		tmp.z = sphere.transform.position.z;
-		camera.transform.position = cameraStartPos + tmp;
-
 		if (startCountDownSeconds > 0) {
 			return;
 		} else {
@@ -113,16 +113,38 @@ public class Area : MonoBehaviour {
 			}
 		}
 
+		if (!movingCamera) {
+			camera.transform.position = getCameraPos (sphere.transform.position);
+	
+		}
+
 		if ((!canMove && flySeconds > 0.5f && !sphere.GetComponent<Sphere>().inTube) || sphere.GetComponent<Sphere>().crash) {
-			Debug.Log ("inTube "+ sphere.GetComponent<Sphere>().inTube + "flySeconds= "+ flySeconds + " crash= "+sphere.GetComponent<Sphere>().crash);
+//			Debug.Log ("inTube "+ sphere.GetComponent<Sphere>().inTube + "flySeconds= "+ flySeconds + " crash= "+sphere.GetComponent<Sphere>().crash);
 			sphere.rigidbody.velocity = Vector3.zero;
 			sphere.rigidbody.angularVelocity = Vector3.zero;
 //			sphere.rigidbody.Sleep();
-			sphere.GetComponent<Sphere>().crash = false;
+		
+			if(!movingCamera){
+				movingCameraTime = 0;
+				movingCamera = true;
+				sphereFromPos = sphere.transform.position;
+				sphereToPos = sphere.GetComponent<Sphere>().jumpPos;
+				sphere.transform.position = sphereToPos;
+				sphere.SetActive(false);
+				Debug.Log("movingCamera false sphereFromPos=" + sphereFromPos + "sphereToPos=" + sphereToPos);
+			}else{
+				movingCameraTime += Time.deltaTime;
+				camera.transform.position = getCameraPos(Vector3.Lerp (sphereFromPos, sphereToPos, movingCameraTime));
+				Debug.Log("movingCamera true camera pos=" + camera.transform.position );
+				if(camera.transform.position == getCameraPos (sphereToPos)){
+					sphere.SetActive(true);
+					Debug.Log("movingCamera true camera pos=====");
+					movingCamera = false;
+					canMove = true;
+					sphere.GetComponent<Sphere>().crash = false;
 
-			canMove = true;
-			sphere.transform.position = sphere.GetComponent<Sphere>().jumpPos;
-
+				}
+			}
 		}
 
 
@@ -154,7 +176,7 @@ public class Area : MonoBehaviour {
 
 	void OnTouchDown(Vector2 pos){
 //		Debug.Log ("tmpSeconds="+tmpSeconds);
-		if (tmpSeconds <= 0) {
+		if (tmpSeconds <= 0 || isWin) {
 			Application.LoadLevel ("menu");
 		}
 	}
@@ -216,6 +238,7 @@ public class Area : MonoBehaviour {
 		if (notStart) {// not start yet
 			return;
 		}
+		Debug.Log ("updateCanMove =" + value);
 		canMove = value;
 	}
 
@@ -223,6 +246,8 @@ public class Area : MonoBehaviour {
 		canMove = false;
 		startCountDownSeconds = 3.0f;
 		timesLabel.text = maxSeconds.ToString ("F1");
+		sphereStartPos = sphere.transform.position;
+		cameraStartPos = camera.transform.position;
 	}
 
 	void countDown(){
@@ -261,8 +286,7 @@ public class Area : MonoBehaviour {
 			startCountDownSeconds -= Time.fixedDeltaTime;
 			startCountDownLabel.text = startCountDownSeconds.ToString ("F0");
 		} else {//after start
-			if (!canMove && !sphere.GetComponent<Sphere>().inTube) {
-				Debug.Log ("flySeconds="+flySeconds);
+			if (!canMove && !sphere.GetComponent<Sphere>().inTube && !isWin) {
 				flySeconds += Time.fixedDeltaTime;
 			}
 		}
@@ -273,6 +297,14 @@ public class Area : MonoBehaviour {
 		winSound.Play ();
 		isWin = true;
 		winYep.GetComponent<TweenPosition> ().enabled = true;
+	}
+
+	Vector3 getCameraPos(Vector3 spherePos){
+		Vector3 tmp;
+		tmp.x = (spherePos.x - sphereStartPos.x) * 0.8f;
+		tmp.y = spherePos.y - sphereStartPos.y;
+		tmp.z = spherePos.z;
+		return cameraStartPos + tmp;
 	}
 
 }

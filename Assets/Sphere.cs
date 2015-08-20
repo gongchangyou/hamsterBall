@@ -52,7 +52,7 @@ public class Sphere : MonoBehaviour {
 			Area area = transform.GetComponentInParent<Area>();
 			area.win();
 			area.canMove = false;
-			rigidbody.Sleep();
+
 			return;
 		}
 
