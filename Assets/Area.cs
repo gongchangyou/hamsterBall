@@ -33,7 +33,6 @@ public class Area : MonoBehaviour {
 
 	protected Vector3 sphereStartPos;
 	protected Vector3 cameraStartPos;
-	protected float endY = -20;
 
 	[SerializeField]
 	protected UILabel timesLabel;
@@ -46,7 +45,9 @@ public class Area : MonoBehaviour {
 
 	public bool canMove{
 		get{ return _canMove;}
-		set{ _canMove = value;}
+		set{ _canMove = value;if(value){
+				flySeconds = 0.0f;
+			}}
 	}
 	private bool _canMove = true;
 
@@ -64,6 +65,18 @@ public class Area : MonoBehaviour {
 	[SerializeField]
 	private UILabel startCountDownLabel;
 	private bool notStart = true;
+
+	[SerializeField]
+	public UITexture winYep;
+
+	[SerializeField]
+	private AudioSource winSound;
+	[SerializeField]
+	private AudioSource bgSound;
+
+	private bool isWin = false;
+
+	private float flySeconds = 0.0f;
 	// Use this for initialization
 	protected void Start () {
 		Gesture.onDraggingE += OnDragging;
@@ -99,13 +112,17 @@ public class Area : MonoBehaviour {
 				countDown ();
 			}
 		}
-		if (sphere.transform.position.y < endY || sphere.GetComponent<Sphere>().crash) {
-			_canMove = true;
-			sphere.transform.position = sphere.GetComponent<Sphere>().jumpPos;
+
+		if ((!canMove && flySeconds > 0.5f && !sphere.GetComponent<Sphere>().inTube) || sphere.GetComponent<Sphere>().crash) {
+			Debug.Log ("inTube "+ sphere.GetComponent<Sphere>().inTube + "flySeconds= "+ flySeconds + " crash= "+sphere.GetComponent<Sphere>().crash);
 			sphere.rigidbody.velocity = Vector3.zero;
 			sphere.rigidbody.angularVelocity = Vector3.zero;
 //			sphere.rigidbody.Sleep();
 			sphere.GetComponent<Sphere>().crash = false;
+
+			canMove = true;
+			sphere.transform.position = sphere.GetComponent<Sphere>().jumpPos;
+
 		}
 
 
@@ -117,19 +134,20 @@ public class Area : MonoBehaviour {
 			"time", 0.1f, "islocal", true, "easetype", iTween.EaseType.linear));
 		}
 		*/
-
-		timesLabel.text = tmpSeconds.ToString ("F1");
-		if(tmpSeconds < 10){
-			timesLabel.color = new Color (255,0,0);
-		}
+		if (!isWin) {
+			timesLabel.text = tmpSeconds.ToString ("F1");
+			if (tmpSeconds < 10) {
+				timesLabel.color = new Color (255, 0, 0);
+			}
 //		Debug.Log ("this update tmpSeconds="+this+tmpSeconds);
-		if (tmpSeconds <= 0) {
-			canMove = false;
-			sphere.rigidbody.Sleep();
-			//times up
-			if(timesUpTexture.transform.position.x < 0){
-				lostSound.Play();
-				timesUpTexture.transform.position += new Vector3(Time.deltaTime * 50, 0, 0);
+			if (tmpSeconds <= 0) {
+				canMove = false;
+				sphere.rigidbody.Sleep ();
+				//times up
+				if (timesUpTexture.transform.position.x < 0) {
+					lostSound.Play ();
+					timesUpTexture.transform.position = new Vector3 (Mathf.Lerp (timesUpTexture.transform.position.x, 0, Time.time / 10), 0, 0);
+				}
 			}
 		}
 	}
@@ -143,7 +161,7 @@ public class Area : MonoBehaviour {
 
 	void OnDragging(DragInfo dragInfo){
 		//Debug.Log (dragInfo.pos);
-		if (!_canMove) {
+		if (!canMove) {
 			return;
 		}
 		if (lastPos == Vector2.zero) {
@@ -159,13 +177,14 @@ public class Area : MonoBehaviour {
 //			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.1f;
 			sphere.rigidbody.AddTorque(force);
 */
-			/* add force
+			// add force
 			Vector3 force = new Vector3(tmp.x, 0, tmp.y);
 			force.Normalize();
-			force *= 20 * sphere.rigidbody.mass;
-			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.1f;
-			sphere.rigidbody.AddForce(force);
-*/
+			force *= 30 * sphere.rigidbody.mass;
+			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.5f;
+			Vector3 pos =  sphere.transform.position + new Vector3(0.0f, sphere.transform.localScale.x * sphere.GetComponent<SphereCollider>().radius * 1.8f, 0.0f);
+			sphere.rigidbody.AddForceAtPosition(force, pos);
+			/*
 			//mod av
 			int times = 150;
 			// mod angularVelocity
@@ -183,7 +202,7 @@ public class Area : MonoBehaviour {
 			v.Normalize ();
 			v *= times / 2;
 			sphere.rigidbody.velocity = v * sphere.GetComponent<SphereCollider>().radius * sphere.transform.localScale.x / 6.28f + yVelocity;
-
+*/
 		}
 	
 	}
@@ -193,16 +212,16 @@ public class Area : MonoBehaviour {
 //		Debug.Log("Drag end");
 	}
 
-	void updateCanMove(bool canMove){
+	void updateCanMove(bool value){
 		if (notStart) {// not start yet
 			return;
 		}
-		_canMove = canMove;
+		canMove = value;
 	}
 
 	protected void Awake(){
 		canMove = false;
-		startCountDownSeconds = 0.0f;
+		startCountDownSeconds = 3.0f;
 		timesLabel.text = maxSeconds.ToString ("F1");
 	}
 
@@ -238,10 +257,22 @@ public class Area : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (startCountDownSeconds > 0) {
+		if (startCountDownSeconds > 0) {//before start
 			startCountDownSeconds -= Time.fixedDeltaTime;
 			startCountDownLabel.text = startCountDownSeconds.ToString ("F0");
+		} else {//after start
+			if (!canMove && !sphere.GetComponent<Sphere>().inTube) {
+				Debug.Log ("flySeconds="+flySeconds);
+				flySeconds += Time.fixedDeltaTime;
+			}
 		}
+	}
+
+	public void win(){
+		bgSound.Stop ();
+		winSound.Play ();
+		isWin = true;
+		winYep.GetComponent<TweenPosition> ().enabled = true;
 	}
 
 }

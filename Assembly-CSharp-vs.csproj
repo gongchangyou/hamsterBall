@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Area.cs" />
      <Compile Include="Assets\Area1.cs" />
+     <Compile Include="Assets\Area2.cs" />
      <Compile Include="Assets\InputTouches\FPSDisplay\FpsDisplay.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />

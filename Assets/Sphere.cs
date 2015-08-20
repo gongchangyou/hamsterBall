@@ -8,13 +8,13 @@ public class Sphere : MonoBehaviour {
 	private float crashHeight = 0.5f;
 
 	public Vector3 jumpPos = Vector3.zero;
+	private Vector3 crashPos = Vector3.zero;
 	private List<Vector3> trace = new List<Vector3>();
 
 	public bool crash = false;
 
-	public bool startFly = false;
-
-	public bool inCube = false;
+	public bool inTube = false;
+	
 	// Use this for initialization
 	void Start () {
 		rigidbody.angularDrag = angularDrag;
@@ -35,12 +35,11 @@ public class Sphere : MonoBehaviour {
 //			}
 //		}
 //		Debug.Log ("sphere angurlar" + rigidbody.angularVelocity);
-
 	}
 
 	void OnTriggerEnter(Collider other){
 		Debug.Log ("sphere trigger");
-		inCube = true;
+		inTube = true;
 	}	
 
 	void OnTriggerExit(Collider other){
@@ -49,20 +48,26 @@ public class Sphere : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collisionInfo)
 	{
+		if (collisionInfo.collider.name == "endPoint") {
+			Area area = transform.GetComponentInParent<Area>();
+			area.win();
+			area.canMove = false;
+			rigidbody.Sleep();
+			return;
+		}
+
 		Debug.Log ("sphere OnCollisionEnter  jumpPos="+jumpPos + "curPos="+transform.position);
 		//judge crash
-		if (inCube) {
-			inCube = false;
-		} else {
-			if (startFly) {
-				Vector3 curPos = transform.position;
-				Vector3 lastPos = jumpPos;
+		if (!inTube) {
 
-				if (lastPos.y - curPos.y > crashHeight) {
-					crash = true;
-					Debug.Log ("crash=true");
-				}
+			Vector3 curPos = transform.position;
+			Vector3 lastPos = crashPos;
+
+			if (lastPos.y - curPos.y > crashHeight) {
+				crash = true;
+				Debug.Log ("crash=true");
 			}
+
 		}
 	}
 
@@ -78,23 +83,30 @@ public class Sphere : MonoBehaviour {
 	void OnCollisionExit(Collision collisionInfo)
 	{
 		Debug.Log("exit 碰撞到的物体的名字是：" + collisionInfo.gameObject.name);
-		if (!inCube) {
-			startFly = true;
-		}
 		GameObject area = GameObject.Find("Area");
 		if (area) {
 			area.SendMessage ("updateCanMove", false);
 		}
+		crashPos = transform.position;
 	}
 
 	void updateJumpPos(){
-		trace.Add (transform.position);
-		jumpPos = trace [(int)Mathf.Max( 0, trace.Count - 0.5f/Time.fixedDeltaTime)];//the position before 0.5 second
+		if (rigidbody.velocity.y >= 0) {
+			trace.Add (transform.position);
+			jumpPos = trace [(int)Mathf.Max (0, trace.Count - 0.5f / Time.fixedDeltaTime)];//the position before 0.5 second
+		}
 	}
 
 	void FixedUpdate(){
+		if (inTube) {
+			Vector3 v = rigidbody.velocity;
+			if(v.y >= 0){
+				Debug.Log ("inTube velocity="+v);
+				inTube = false;
+			}
+		}
 		//update angular velocity whit velocity 
-		Vector3 v = rigidbody.velocity;
+//		Vector3 v = rigidbody.velocity;
 //		Debug.Log ("v="+v + "av="+rigidbody.angularVelocity);
 //		rigidbody.angularVelocity = new Vector3 (v.z,0,-v.x) / GetComponent<SphereCollider>().radius;
 
