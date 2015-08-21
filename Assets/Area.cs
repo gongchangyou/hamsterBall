@@ -46,7 +46,7 @@ public class Area : MonoBehaviour {
 	public bool canMove{
 		get{ return _canMove;}
 		set{ _canMove = value;if(value){
-				Debug.Log ("canmove true");
+//				Debug.Log ("canmove true");
 				flySeconds = 0.0f;
 			}}
 	}
@@ -131,14 +131,14 @@ public class Area : MonoBehaviour {
 				sphereToPos = sphere.GetComponent<Sphere>().jumpPos;
 				sphere.transform.position = sphereToPos;
 				sphere.SetActive(false);
-				Debug.Log("movingCamera false sphereFromPos=" + sphereFromPos + "sphereToPos=" + sphereToPos);
+//				Debug.Log("movingCamera false sphereFromPos=" + sphereFromPos + "sphereToPos=" + sphereToPos);
 			}else{
 				movingCameraTime += Time.deltaTime;
 				camera.transform.position = getCameraPos(Vector3.Lerp (sphereFromPos, sphereToPos, movingCameraTime));
-				Debug.Log("movingCamera true camera pos=" + camera.transform.position );
+//				Debug.Log("movingCamera true camera pos=" + camera.transform.position );
 				if(camera.transform.position == getCameraPos (sphereToPos)){
 					sphere.SetActive(true);
-					Debug.Log("movingCamera true camera pos=====");
+//					Debug.Log("movingCamera true camera pos=====");
 					movingCamera = false;
 					canMove = true;
 					sphere.GetComponent<Sphere>().crash = false;
@@ -202,9 +202,9 @@ public class Area : MonoBehaviour {
 			// add force
 			Vector3 force = new Vector3(tmp.x, 0, tmp.y);
 			force.Normalize();
-			force *= 30 * sphere.rigidbody.mass;
-			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.5f;
-			Vector3 pos =  sphere.transform.position + new Vector3(0.0f, sphere.transform.localScale.x * sphere.GetComponent<SphereCollider>().radius * 1.8f, 0.0f);
+			force *= 3 * sphere.rigidbody.mass;
+//			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.01f;
+			Vector3 pos =  sphere.transform.position + new Vector3(0.0f, sphere.transform.localScale.x * sphere.GetComponent<SphereCollider>().radius * 1.5f, 0.0f);
 			sphere.rigidbody.AddForceAtPosition(force, pos);
 			/*
 			//mod av
@@ -238,7 +238,7 @@ public class Area : MonoBehaviour {
 		if (notStart) {// not start yet
 			return;
 		}
-		Debug.Log ("updateCanMove =" + value);
+//		Debug.Log ("updateCanMove =" + value);
 		canMove = value;
 	}
 

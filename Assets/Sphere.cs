@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 public class Sphere : MonoBehaviour {
 
-	private float angularDrag = 0.5f;
+	private float angularDrag = 1.0f;
 
-	private float crashHeight = 0.5f;
+	private float crashHeight = 0.3f;
 
 	public Vector3 jumpPos = Vector3.zero;
 	private Vector3 crashPos = Vector3.zero;
@@ -39,7 +39,17 @@ public class Sphere : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		Debug.Log ("sphere trigger");
-		inTube = true;
+		if (other.name == "tube") {
+			inTube = true;
+		}
+
+		if (other.name == "endPoint") {
+			Area area = transform.GetComponentInParent<Area>();
+			area.win();
+			area.canMove = false;
+			other.gameObject.GetComponent<UITexture>().mainTexture = Resources.Load("png/goal-lit") as Texture;
+		}
+
 	}	
 
 	void OnTriggerExit(Collider other){
@@ -48,13 +58,6 @@ public class Sphere : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collisionInfo)
 	{
-		if (collisionInfo.collider.name == "endPoint") {
-			Area area = transform.GetComponentInParent<Area>();
-			area.win();
-			area.canMove = false;
-			collisionInfo.gameObject.GetComponent<UITexture>().mainTexture = Resources.Load("png/goal-lit") as Texture;
-			return;
-		}
 
 		Debug.Log ("sphere OnCollisionEnter  jumpPos="+jumpPos + "curPos="+transform.position);
 		//judge crash
@@ -105,10 +108,10 @@ public class Sphere : MonoBehaviour {
 				inTube = false;
 			}
 		}
-		//update angular velocity whit velocity 
-//		Vector3 v = rigidbody.velocity;
-//		Debug.Log ("v="+v + "av="+rigidbody.angularVelocity);
-//		rigidbody.angularVelocity = new Vector3 (v.z,0,-v.x) / GetComponent<SphereCollider>().radius;
+		//update angular velocity with velocity 
+		Vector3 velocity = rigidbody.velocity;
+//		Debug.Log ("v="+ velocity + "av="+rigidbody.angularVelocity);
+		rigidbody.angularVelocity = new Vector3 (velocity.z,0,-velocity.x) / GetComponent<SphereCollider>().radius;
 
 	}
 }
