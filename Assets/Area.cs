@@ -177,7 +177,7 @@ public class Area : MonoBehaviour {
 	void OnTouchDown(Vector2 pos){
 //		Debug.Log ("tmpSeconds="+tmpSeconds);
 		if (tmpSeconds <= 0 || isWin) {
-			Application.LoadLevel ("menu");
+			Application.LoadLevelAsync ("menu");
 		}
 	}
 

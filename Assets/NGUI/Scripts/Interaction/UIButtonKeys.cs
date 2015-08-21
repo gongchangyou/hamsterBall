@@ -1,6 +1,6 @@
-﻿//----------------------------------------------
+//----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2012 Tasharen Entertainment
+// Copyright © 2011-2013 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -20,15 +20,19 @@ public class UIButtonKeys : MonoBehaviour
 	public UIButtonKeys selectOnDown;
 	public UIButtonKeys selectOnLeft;
 	public UIButtonKeys selectOnRight;
-	
-	void Start ()
+
+	void OnEnable ()
 	{
-		if (startsSelected && (UICamera.selectedObject == null || !NGUITools.GetActive(UICamera.selectedObject)))
+		if (startsSelected)
 		{
-			UICamera.selectedObject = gameObject;
+			if (UICamera.selectedObject == null || !NGUITools.GetActive(UICamera.selectedObject))
+			{
+				UICamera.currentScheme = UICamera.ControlScheme.Controller;
+				UICamera.selectedObject = gameObject;
+			}
 		}
 	}
-	 
+
 	void OnKey (KeyCode key)
 	{
 		if (enabled && NGUITools.GetActive(gameObject))
@@ -70,8 +74,6 @@ public class UIButtonKeys : MonoBehaviour
 	void OnClick ()
 	{
 		if (enabled && selectOnClick != null)
-		{
 			UICamera.selectedObject = selectOnClick.gameObject;
-		}
 	}
 }

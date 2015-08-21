@@ -47,7 +47,7 @@ public class Sphere : MonoBehaviour {
 			Area area = transform.GetComponentInParent<Area>();
 			area.win();
 			area.canMove = false;
-			other.gameObject.GetComponent<UITexture>().mainTexture = Resources.Load("png/goal-lit") as Texture;
+			other.gameObject.GetComponentInChildren<UITexture>().mainTexture = Resources.Load("png/goal-lit") as Texture;
 		}
 
 	}	
@@ -109,9 +109,9 @@ public class Sphere : MonoBehaviour {
 			}
 		}
 		//update angular velocity with velocity 
-		Vector3 velocity = rigidbody.velocity;
-//		Debug.Log ("v="+ velocity + "av="+rigidbody.angularVelocity);
-		rigidbody.angularVelocity = new Vector3 (velocity.z,0,-velocity.x) / GetComponent<SphereCollider>().radius;
+//		Vector3 velocity = rigidbody.velocity;
+////		Debug.Log ("v="+ velocity + "av="+rigidbody.angularVelocity);
+//		rigidbody.angularVelocity = new Vector3 (velocity.z,0,-velocity.x) / GetComponent<SphereCollider>().radius;
 
 	}
 }

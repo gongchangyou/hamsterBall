@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Area2 : Area {
 	// Use this for initialization
 	void Awake(){
-		maxSeconds = 40.0f;
+		maxSeconds = 2.0f;
 		base.Awake ();
 
 	}
