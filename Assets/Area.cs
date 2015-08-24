@@ -41,11 +41,14 @@ public class Area : MonoBehaviour {
 	protected float maxSeconds = 10.0f;
 
 	protected float tmpSeconds;
-	
+
+	private float forceTime = 3;
 
 	public bool canMove{
 		get{ return _canMove;}
-		set{ _canMove = value;if(value){
+		set{
+			_canMove = value;
+			if(value){
 //				Debug.Log ("canmove true");
 				flySeconds = 0.0f;
 			}}
@@ -83,6 +86,7 @@ public class Area : MonoBehaviour {
 	private Vector3 sphereFromPos;
 	private Vector3 sphereToPos;
 	private float movingCameraTime;
+	
 	// Use this for initialization
 	protected void Start () {
 		Gesture.onDraggingE += OnDragging;
@@ -118,31 +122,33 @@ public class Area : MonoBehaviour {
 	
 		}
 
-		if ((!canMove && flySeconds > 0.5f && !sphere.GetComponent<Sphere>().inTube) || sphere.GetComponent<Sphere>().crash) {
-			Debug.Log ("inTube "+ sphere.GetComponent<Sphere>().inTube + "flySeconds= "+ flySeconds + " crash= "+sphere.GetComponent<Sphere>().crash);
-			sphere.rigidbody.velocity = Vector3.zero;
-			sphere.rigidbody.angularVelocity = Vector3.zero;
+		if (tmpSeconds >= 0) {
+			if ((!canMove && flySeconds > 0.5f && !sphere.GetComponent<Sphere> ().inTube) || sphere.GetComponent<Sphere> ().crash) {
+//			Debug.Log ("inTube "+ sphere.GetComponent<Sphere>().inTube + "flySeconds= "+ flySeconds + " crash= "+sphere.GetComponent<Sphere>().crash);
+				sphere.rigidbody.velocity = Vector3.zero;
+				sphere.rigidbody.angularVelocity = Vector3.zero;
 //			sphere.rigidbody.Sleep();
 		
-			if(!movingCamera){
-				movingCameraTime = 0;
-				movingCamera = true;
-				sphereFromPos = sphere.transform.position;
-				sphereToPos = sphere.GetComponent<Sphere>().jumpPos;
-				sphere.transform.position = sphereToPos;
-				sphere.SetActive(false);
+				if (!movingCamera) {
+					movingCameraTime = 0;
+					movingCamera = true;
+					sphereFromPos = sphere.transform.position;
+					sphereToPos = sphere.GetComponent<Sphere> ().jumpPos;
+					sphere.transform.position = sphereToPos;
+					sphere.SetActive (false);
 //				Debug.Log("movingCamera false sphereFromPos=" + sphereFromPos + "sphereToPos=" + sphereToPos);
-			}else{
-				movingCameraTime += Time.deltaTime;
-				camera.transform.position = getCameraPos(Vector3.Lerp (sphereFromPos, sphereToPos, movingCameraTime));
+				} else {
+					movingCameraTime += Time.deltaTime;
+					camera.transform.position = getCameraPos (Vector3.Lerp (sphereFromPos, sphereToPos, movingCameraTime));
 //				Debug.Log("movingCamera true camera pos=" + camera.transform.position );
-				if(camera.transform.position == getCameraPos (sphereToPos)){
-					sphere.SetActive(true);
+					if (camera.transform.position == getCameraPos (sphereToPos)) {
+						sphere.SetActive (true);
 //					Debug.Log("movingCamera true camera pos=====");
-					movingCamera = false;
-					canMove = true;
-					sphere.GetComponent<Sphere>().crash = false;
-
+						movingCamera = false;
+						canMove = true;
+						sphere.GetComponent<Sphere> ().crash = false;
+						sphere.GetComponent<Sphere> ().crashPos = sphereToPos;
+					}
 				}
 			}
 		}
@@ -202,7 +208,7 @@ public class Area : MonoBehaviour {
 			// add force
 			Vector3 force = new Vector3(tmp.x, 0, tmp.y);
 			force.Normalize();
-			force *= 3 * sphere.rigidbody.mass;
+			force *= forceTime * sphere.rigidbody.mass;
 //			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.01f;
 			Vector3 pos =  sphere.transform.position + new Vector3(0.0f, sphere.transform.localScale.x * sphere.GetComponent<SphereCollider>().radius * 1.5f, 0.0f);
 			sphere.rigidbody.AddForceAtPosition(force, pos);
@@ -307,4 +313,24 @@ public class Area : MonoBehaviour {
 		return cameraStartPos + tmp;
 	}
 
+	// slider for test
+	public void OnSliderChange(){
+		float value = GameObject.Find("slider_mass").GetComponent<UISlider> ().value;
+
+		sphere.rigidbody.mass = value * 10;
+		Debug.Log ("mass="+ value *10);
+	}
+
+	public void OnForceChange(){
+		float value = GameObject.Find("slider_force").GetComponent<UISlider> ().value;
+		forceTime = value * 10;
+		Debug.Log ("force="+ value *10);
+	}
+
+	public void OnAgChange(){
+		float value = GameObject.Find("slider_ag").GetComponent<UISlider> ().value;
+		sphere.rigidbody.angularDrag = value;
+		Debug.Log ("ag="+ value);
+	}
+	
 }

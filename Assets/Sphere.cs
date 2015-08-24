@@ -8,7 +8,7 @@ public class Sphere : MonoBehaviour {
 	private float crashHeight = 0.3f;
 
 	public Vector3 jumpPos = Vector3.zero;
-	private Vector3 crashPos = Vector3.zero;
+	public Vector3 crashPos = Vector3.zero;
 	private List<Vector3> trace = new List<Vector3>();
 
 	public bool crash = false;
@@ -59,7 +59,7 @@ public class Sphere : MonoBehaviour {
 	void OnCollisionEnter(Collision collisionInfo)
 	{
 
-		Debug.Log ("sphere OnCollisionEnter  jumpPos="+jumpPos + "curPos="+transform.position);
+		Debug.Log ("sphere OnCollisionEnter  jumpPos="+jumpPos + "curPos="+transform.position + "crashPos=" + crashPos);
 		//judge crash
 		if (!inTube) {
 

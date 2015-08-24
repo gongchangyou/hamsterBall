@@ -1,20 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/NGUI/Scripts/Interaction/UIInputValidator.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Area.cs">
     <Files>
+      <File FileName="Assets/Sphere.cs" Line="49" Column="1" />
+      <File FileName="Assets/Area2.cs" Line="9" Column="3" />
       <File FileName="Assets/Area1.cs" Line="8" Column="17" />
-      <File FileName="Assets/Area.cs" Line="1" Column="1" />
-      <File FileName="Assets/TriggerSound.cs" Line="1" Column="1" />
-      <File FileName="Assets/map.cs" Line="1" Column="1" />
-      <File FileName="Assets/menu.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Examples/Scripts/InventorySystem/Game/UIEquipmentSlot.cs" Line="1" Column="1" />
-      <File FileName="Assets/Area2.cs" Line="1" Column="1" />
-      <File FileName="Assets/Sphere.cs" Line="1" Column="1" />
-      <File FileName="Assets/sliderNode.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Scripts/UI/UIPanel.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Scripts/Interaction/UISlider.cs" Line="1" Column="1" />
-      <File FileName="Assets/NGUI/Scripts/Interaction/UIInputValidator.cs" Line="31" Column="2" />
-      <File FileName="Assets/NGUI/Scripts/UI/UIInput.cs" Line="669" Column="37" />
+      <File FileName="Assets/Area.cs" Line="302" Column="29" />
+      <File FileName="Assets/menu.cs" Line="25" Column="3" />
+      <File FileName="Assets/sliderNode.cs" Line="16" Column="21" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
