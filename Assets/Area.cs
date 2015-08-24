@@ -24,7 +24,7 @@ public static class TimeSpanToolV2
 	}
 }
 
-public class Area : MonoBehaviour {
+public abstract class Area : MonoBehaviour {
 	[SerializeField]
 	protected GameObject sphere;
 	[SerializeField]
@@ -47,9 +47,9 @@ public class Area : MonoBehaviour {
 	public bool canMove{
 		get{ return _canMove;}
 		set{
+			Debug.Log ("canmove value=" + value);
 			_canMove = value;
 			if(value){
-//				Debug.Log ("canmove true");
 				flySeconds = 0.0f;
 			}}
 	}
@@ -86,7 +86,8 @@ public class Area : MonoBehaviour {
 	private Vector3 sphereFromPos;
 	private Vector3 sphereToPos;
 	private float movingCameraTime;
-	
+
+	protected abstract void setPlayerInt();
 	// Use this for initialization
 	protected void Start () {
 		Gesture.onDraggingE += OnDragging;
@@ -303,6 +304,7 @@ public class Area : MonoBehaviour {
 		winSound.Play ();
 		isWin = true;
 		winYep.GetComponent<TweenPosition> ().enabled = true;
+		setPlayerInt();
 	}
 
 	Vector3 getCameraPos(Vector3 spherePos){

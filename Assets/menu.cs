@@ -3,9 +3,23 @@ using System.Collections;
 
 public class menu : MonoBehaviour {
 
+	void Awake(){
+		for (int i=1; i<3; i++) {
+			string areaName = "Area" + i;
+			if(!PlayerPrefs.HasKey(areaName)){
+				if(i == 1 || PlayerPrefs.HasKey("Area" + (i - 1))){
+				}else{
+					string buttonName = "button" + i;
+					GameObject button = GameObject.Find (buttonName);
+					button.GetComponent<UIButton>().isEnabled = false;
+					button.GetComponent<UIButtonMessage>().enabled = false;
+				}
+			}
+		}
+	}
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame

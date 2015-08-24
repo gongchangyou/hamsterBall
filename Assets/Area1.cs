@@ -11,4 +11,8 @@ public class Area1 : Area {
 	void Start () {
 		base.Start();
 	}
+
+	protected override void setPlayerInt(){
+		PlayerPrefs.SetInt ("Area1", 1);
+	}
 }
