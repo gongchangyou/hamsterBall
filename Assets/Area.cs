@@ -119,7 +119,7 @@ public class Area : MonoBehaviour {
 		}
 
 		if ((!canMove && flySeconds > 0.5f && !sphere.GetComponent<Sphere>().inTube) || sphere.GetComponent<Sphere>().crash) {
-//			Debug.Log ("inTube "+ sphere.GetComponent<Sphere>().inTube + "flySeconds= "+ flySeconds + " crash= "+sphere.GetComponent<Sphere>().crash);
+			Debug.Log ("inTube "+ sphere.GetComponent<Sphere>().inTube + "flySeconds= "+ flySeconds + " crash= "+sphere.GetComponent<Sphere>().crash);
 			sphere.rigidbody.velocity = Vector3.zero;
 			sphere.rigidbody.angularVelocity = Vector3.zero;
 //			sphere.rigidbody.Sleep();
@@ -177,7 +177,7 @@ public class Area : MonoBehaviour {
 	void OnTouchDown(Vector2 pos){
 //		Debug.Log ("tmpSeconds="+tmpSeconds);
 		if (tmpSeconds <= 0 || isWin) {
-			Application.LoadLevelAsync ("menu");
+			Application.LoadLevel ("menu");
 		}
 	}
 
@@ -286,7 +286,7 @@ public class Area : MonoBehaviour {
 			startCountDownSeconds -= Time.fixedDeltaTime;
 			startCountDownLabel.text = startCountDownSeconds.ToString ("F0");
 		} else {//after start
-			if (!canMove && !sphere.GetComponent<Sphere>().inTube && !isWin) {
+			if (!canMove && !sphere.GetComponent<Sphere>().inTube && !isWin && tmpSeconds>=0) {
 				flySeconds += Time.fixedDeltaTime;
 			}
 		}
