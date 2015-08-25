@@ -49,6 +49,8 @@
      <Compile Include="Assets\Area.cs" />
      <Compile Include="Assets\Area1.cs" />
      <Compile Include="Assets\Area2.cs" />
+     <Compile Include="Assets\Area_endless.cs" />
+     <Compile Include="Assets\CubeCollider.cs" />
      <Compile Include="Assets\InputTouches\FPSDisplay\FpsDisplay.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
@@ -174,6 +176,7 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Sphere.cs" />
+     <Compile Include="Assets\Sphere_endless.cs" />
      <Compile Include="Assets\TriggerSound.cs" />
      <Compile Include="Assets\iTweenEditor\Helper Classes\EventParamMappings.cs" />
      <Compile Include="Assets\iTweenEditor\Helper Classes\Vector3OrTransform.cs" />

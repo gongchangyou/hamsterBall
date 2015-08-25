@@ -47,7 +47,7 @@ public abstract class Area : MonoBehaviour {
 	public bool canMove{
 		get{ return _canMove;}
 		set{
-			Debug.Log ("canmove value=" + value);
+//			Debug.Log ("canmove value=" + value);
 			_canMove = value;
 			if(value){
 				flySeconds = 0.0f;
@@ -59,16 +59,16 @@ public abstract class Area : MonoBehaviour {
 	private UITexture timesUpTexture;
 
 	[SerializeField]
-	private AudioSource startWhistle;
+	protected AudioSource startWhistle;
 
-	private float startCountDownSeconds;
+	protected float startCountDownSeconds;
 
 	[SerializeField]
 	private AudioSource lostSound;
 
 	[SerializeField]
-	private UILabel startCountDownLabel;
-	private bool notStart = true;
+	protected UILabel startCountDownLabel;
+	protected bool notStart = true;
 
 	[SerializeField]
 	public UITexture winYep;
@@ -80,7 +80,7 @@ public abstract class Area : MonoBehaviour {
 
 	private bool isWin = false;
 
-	private float flySeconds = 0.0f;
+	protected float flySeconds = 0.0f;
 
 	private bool movingCamera = false;
 	private Vector3 sphereFromPos;
@@ -307,7 +307,7 @@ public abstract class Area : MonoBehaviour {
 		setPlayerInt();
 	}
 
-	Vector3 getCameraPos(Vector3 spherePos){
+	protected Vector3 getCameraPos(Vector3 spherePos){
 		Vector3 tmp;
 		tmp.x = (spherePos.x - sphereStartPos.x) * 0.8f;
 		tmp.y = spherePos.y - sphereStartPos.y;
