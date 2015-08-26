@@ -42,7 +42,7 @@ public abstract class Area : MonoBehaviour {
 
 	protected float tmpSeconds;
 
-	private float forceTime = 3;
+	private float forceTime = 4.5f;
 
 	public bool canMove{
 		get{ return _canMove;}
@@ -309,7 +309,8 @@ public abstract class Area : MonoBehaviour {
 
 	protected Vector3 getCameraPos(Vector3 spherePos){
 		Vector3 tmp;
-		tmp.x = (spherePos.x - sphereStartPos.x) * 0.8f;
+//		tmp.x = (spherePos.x - sphereStartPos.x) * 0.8f;
+		tmp.x = (spherePos.x - sphereStartPos.x);
 		tmp.y = spherePos.y - sphereStartPos.y;
 		tmp.z = spherePos.z;
 		return cameraStartPos + tmp;
