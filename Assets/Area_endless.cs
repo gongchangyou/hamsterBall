@@ -2,12 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 public class Area_endless : Area {
+	[SerializeField]
+	UILabel scoreLabel;
+
 	List<GameObject> map = new List<GameObject>();
 
 	int maxMesh = 8;// 8 cube as a circle
 	int meshIndex = 0;
 	int lastDirection = 0;
 	List<string> blockNameList = new List<string>(){ "cube", "slope"};
+
+	int score = 0;
 	// Use this for initialization
 	void Awake(){
 		base.Awake ();
@@ -18,6 +23,7 @@ public class Area_endless : Area {
 		addPath ("cube", new Vector3(0, -0.3f,1.5f), Vector3.zero);
 		addPath ("cube", new Vector3(0, -0.35f,3.0f), Vector3.zero);
 		meshIndex = 3;
+
 	}
 
 	void Start () {
@@ -55,7 +61,6 @@ public class Area_endless : Area {
 
 	public void addNewCube(GameObject cube){
 		Debug.Log ("map.count=" + map.Count);
-
 		if (cube == map [map.Count - 3]) {
 			addRandomPath(map[map.Count - 1]);
 		}
@@ -69,6 +74,7 @@ public class Area_endless : Area {
 	}
 
 	void addRandomPath(GameObject lastBlock){
+		updateScore ();
 		Vector3 pos = lastBlock.transform.position;
 		Debug.Log ("lastBlock pos="+ pos);
 		Vector3 rotate = lastBlock.transform.rotation.eulerAngles;
@@ -176,6 +182,12 @@ public class Area_endless : Area {
 			Debug.Log ("crash");
 			Application.LoadLevel ("menu");
 		}
+	}
+	 
+	void updateScore(){
+		score++;
+		scoreLabel.text = score.ToString ();
+
 	}
 
 }
