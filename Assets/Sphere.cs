@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 public class Sphere : MonoBehaviour {
 	//important!!! mass = 2.5; forceTime = 44%; angularDarg = 1.0f;is best
-	private float angularDrag = 1.0f;
+	private float angularDrag = 0.5f;
 
 	private float crashHeight = 0.3f;
 

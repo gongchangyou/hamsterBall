@@ -75,8 +75,8 @@ public class Area_endless : Area {
 		int blockIndex = Random.Range (0, blockNameList.Count);
 		Debug.Log ("blockIndex="+ blockIndex);
 		string curBlockName = blockNameList [blockIndex];
-		curBlockName = "cube";
-		lastBlock.name = "cube";
+
+
 		switch (lastBlock.name) {
 			case "cube":
 			{
@@ -86,6 +86,7 @@ public class Area_endless : Area {
 						direction = Random.Range(0,3);
 					}
 				}
+				
 				lastDirection = direction;
 				Debug.Log ("direction="+ direction + "(int)rotate.y" + (int)rotate.y);
 				if(direction == 0){//go straight
@@ -134,8 +135,24 @@ public class Area_endless : Area {
 			}			
 				break;
 			case "slope":
-				pos.y += -0.5f;
-				pos.z += 1.5f;
+				pos.y -= 0.5f;
+
+				switch((int)rotate.y){
+					case 0:
+						pos.z += 1.5f;
+						break;
+					case 90:
+						pos.x += 1.5f;
+						break;
+					case 180:
+						pos.z -= 1.5f;
+						break;
+					case 270:
+						pos.x -= 1.5f;
+						break;
+					
+				}
+
 			break;
 		}
 		addPath (curBlockName, pos, rotate);
@@ -155,7 +172,7 @@ public class Area_endless : Area {
 
 		camera.transform.position = getCameraPos (sphere.transform.position);
 
-		if (flySeconds >= 0.5f) {
+		if (flySeconds >= 0.8f) {
 			Debug.Log ("crash");
 			Application.LoadLevel ("menu");
 		}
