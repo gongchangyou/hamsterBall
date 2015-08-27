@@ -29,7 +29,7 @@ public abstract class Area : MonoBehaviour {
 	protected GameObject sphere;
 	[SerializeField]
 	protected Camera camera;
-	Vector2 lastPos = Vector2.zero;
+	protected Vector2 lastPos = Vector2.zero;
 
 	protected Vector3 sphereStartPos;
 	protected Vector3 cameraStartPos;
@@ -42,7 +42,7 @@ public abstract class Area : MonoBehaviour {
 
 	protected float tmpSeconds;
 
-	private float forceTime = 4.5f;
+	protected float forceTime = 4.5f;
 
 	public bool canMove{
 		get{ return _canMove;}
@@ -120,7 +120,6 @@ public abstract class Area : MonoBehaviour {
 
 		if (!movingCamera) {
 			camera.transform.position = getCameraPos (sphere.transform.position);
-	
 		}
 
 		if (tmpSeconds >= 0) {
@@ -188,7 +187,7 @@ public abstract class Area : MonoBehaviour {
 		}
 	}
 
-	void OnDragging(DragInfo dragInfo){
+	protected virtual void OnDragging(DragInfo dragInfo){
 		//Debug.Log (dragInfo.pos);
 		if (!canMove) {
 			return;

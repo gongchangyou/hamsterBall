@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Area_endless : Area {
 	[SerializeField]
 	UILabel scoreLabel;
-
+	
 	List<GameObject> map = new List<GameObject>();
 
 	int maxMesh = 8;// 8 cube as a circle
@@ -14,35 +14,31 @@ public class Area_endless : Area {
 
 	int score = 0;
 	// Use this for initialization
-	void Awake(){
+	new void Awake(){
 		base.Awake ();
 
 		timesLabel.gameObject.SetActive (false);
 		//at least 3 gameObject
-		addPath ("cube", new Vector3(0, -0.2f, 0), Vector3.zero);
+		addPath ("cube", new Vector3(0, -0.25f, 0), Vector3.zero);
 		addPath ("cube", new Vector3(0, -0.3f,1.5f), Vector3.zero);
 		addPath ("cube", new Vector3(0, -0.35f,3.0f), Vector3.zero);
 		meshIndex = 3;
 
 	}
 
-	void Start () {
+	new void Start () {
 		base.Start();
-	}
-
-	protected override void setPlayerInt(){
-		PlayerPrefs.SetInt ("Area2", 1);
 	}
 
 	void addPath(string pathName, Vector3 pos, Vector3 rotate){
 		//build cube
 		GameObject gFbx = Instantiate (Resources.Load ("mapFactory/" + pathName)) as GameObject; 
 
-		Debug.Log (gFbx);
 		gFbx.transform.parent = this.transform;
+	
 		gFbx.transform.localScale = Vector3.one * 50;
 		gFbx.transform.position = pos;
-		gFbx.transform.Rotate(rotate);
+		gFbx.transform.localRotation = Quaternion.Euler(rotate.x, rotate.y, rotate.z); 
 
 //		MeshCollider mc = gFbx.GetComponent<MeshCollider> ();
 //		PhysicMaterial pm = Resources.Load ("pm") as PhysicMaterial;
@@ -186,7 +182,30 @@ public class Area_endless : Area {
 	void updateScore(){
 		score++;
 		scoreLabel.text = score.ToString ();
-
 	}
 
+	protected override void setPlayerInt(){
+//		PlayerPrefs.SetInt ("Area1", 1);
+	}
+
+	protected override void OnDragging(DragInfo dragInfo){
+		//Debug.Log (dragInfo.pos);
+		if (!canMove) {
+			return;
+		}
+		if (lastPos == Vector2.zero) {
+			lastPos = dragInfo.pos;
+		} else {
+			Vector2 curPos = dragInfo.pos;
+			Vector2 tmp = curPos - lastPos;
+
+			// add force
+			Vector3 force = new Vector3 (-tmp.x, 0, -tmp.x) + new Vector3 (tmp.y, 0, -tmp.y);
+			force.Normalize ();
+			force *= forceTime * sphere.rigidbody.mass;
+			//			sphere.rigidbody.velocity = sphere.rigidbody.velocity * 0.01f;
+			Vector3 pos = sphere.transform.position + new Vector3 (0.0f, sphere.transform.localScale.x * sphere.GetComponent<SphereCollider> ().radius * 1.5f, 0.0f);
+			sphere.rigidbody.AddForceAtPosition (force, pos);
+		}
+	}
 }
