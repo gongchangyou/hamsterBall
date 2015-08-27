@@ -13,6 +13,6 @@ public class CubeCollider : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collisionInfo){
 //		Debug.Log ("endless" + collisionInfo.gameObject.name);
-		transform.parent.parent.GetComponent<Area_endless> ().addNewCube (gameObject);
+		transform.parent.GetComponent<Area_endless> ().addNewCube (gameObject);
 	}
 }
