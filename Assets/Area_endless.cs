@@ -23,7 +23,7 @@ public class Area_endless : Area {
 		addPath ("cube", new Vector3(0, -0.3f,1.5f), Vector3.zero);
 		addPath ("cube", new Vector3(0, -0.35f,3.0f), Vector3.zero);
 		meshIndex = 3;
-
+		isEndless = true;
 	}
 
 	new void Start () {
@@ -160,18 +160,12 @@ public class Area_endless : Area {
 	}
 
 	void Update(){
-		if (startCountDownSeconds > 0) {
+		
+		camera.transform.position = getCameraPos (sphere.transform.position);
+		if (notStart) {
 			return;
-		} else {
-			if(notStart){
-				startWhistle.Play();
-				notStart = false;
-				startCountDownLabel.gameObject.SetActive(false);
-				canMove = true;
-			}
 		}
 
-		camera.transform.position = getCameraPos (sphere.transform.position);
 
 		if (flySeconds >= 0.8f) {
 			Debug.Log ("crash");

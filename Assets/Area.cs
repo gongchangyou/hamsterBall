@@ -61,8 +61,6 @@ public abstract class Area : MonoBehaviour {
 	[SerializeField]
 	protected AudioSource startWhistle;
 
-	protected float startCountDownSeconds;
-
 	[SerializeField]
 	private AudioSource lostSound;
 
@@ -87,6 +85,8 @@ public abstract class Area : MonoBehaviour {
 	private Vector3 sphereToPos;
 	private float movingCameraTime;
 
+	protected bool isEndless = false;
+
 	protected abstract void setPlayerInt();
 	// Use this for initialization
 	protected void Start () {
@@ -96,6 +96,22 @@ public abstract class Area : MonoBehaviour {
 		Gesture.onMouse1DownE += OnTouchDown;
 		tmpSeconds = maxSeconds;
 
+		StartCoroutine (readyCountDown());
+	}
+
+	IEnumerator readyCountDown(){
+		for (int i=3; i>0; i--) {
+			startCountDownLabel.text = i.ToString ();
+			yield return new WaitForSeconds (1f);
+		}
+
+		startWhistle.Play();
+		notStart = false;
+		startCountDownLabel.gameObject.SetActive(false);
+		canMove = true;
+		if (!isEndless) {
+			countDown ();
+		}
 	}
 
 	protected void OnDestroy(){
@@ -106,22 +122,14 @@ public abstract class Area : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		if (startCountDownSeconds > 0) {
-			return;
-		} else {
-			if(notStart){
-				startWhistle.Play();
-				notStart = false;
-				startCountDownLabel.gameObject.SetActive(false);
-				canMove = true;
-				countDown ();
-			}
-		}
-
 		if (!movingCamera) {
 			camera.transform.position = getCameraPos (sphere.transform.position);
 		}
 
+		if (notStart) {
+			return;
+		}
+		//check crash
 		if (tmpSeconds >= 0) {
 			if ((!canMove && flySeconds > 0.5f && !sphere.GetComponent<Sphere> ().inTube) || sphere.GetComponent<Sphere> ().crash) {
 //			Debug.Log ("inTube "+ sphere.GetComponent<Sphere>().inTube + "flySeconds= "+ flySeconds + " crash= "+sphere.GetComponent<Sphere>().crash);
@@ -250,7 +258,7 @@ public abstract class Area : MonoBehaviour {
 
 	protected void Awake(){
 		canMove = false;
-		startCountDownSeconds = 3.0f;
+
 		timesLabel.text = maxSeconds.ToString ("F1");
 		sphereStartPos = sphere.transform.position;
 		cameraStartPos = camera.transform.position;
@@ -288,10 +296,7 @@ public abstract class Area : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (startCountDownSeconds > 0) {//before start
-			startCountDownSeconds -= Time.fixedDeltaTime;
-			startCountDownLabel.text = startCountDownSeconds.ToString ("F0");
-		} else {//after start
+		if (!notStart){//after start
 			if (!canMove && !sphere.GetComponent<Sphere>().inTube && !isWin && tmpSeconds>=0) {
 				flySeconds += Time.fixedDeltaTime;
 			}

@@ -85,15 +85,18 @@ public class Sphere : MonoBehaviour {
 
 	void OnCollisionExit(Collision collisionInfo)
 	{
-		Debug.Log("exit 碰撞到的物体的名字是：" + collisionInfo.gameObject.name);
+
 		GameObject area = GameObject.Find("Area");
 		if (area) {
 			area.SendMessage ("updateCanMove", false);
 		}
+
 		crashPos = transform.position;
+		Debug.Log("exit 碰撞到的物体的名字是：crashPos" + crashPos);
 	}
 
 	void updateJumpPos(){
+		crashPos = transform.position;
 		if (rigidbody.velocity.y >= 0) {
 			trace.Add (transform.position);
 			jumpPos = trace [(int)Mathf.Max (0, trace.Count - 0.5f / Time.fixedDeltaTime)];//the position before 0.5 second
